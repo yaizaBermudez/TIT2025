@@ -1,0 +1,617 @@
+% !TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%			Latex Symbols already defined : 
+%	https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols
+% 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cgitIEEE}[03/11/2021, V0.0]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\RequirePackage{algorithm}
+%\RequirePackage{algpseudocode}  - Used in -IEEEtran
+%\RequirePackage{amsthm}  - Do not used in -IEEEtran
+%\RequirePackage{amsmath} - Used in -IEEEtran
+%\RequirePackage[tbtags]{amsmath} % tbtags makes equation number be at the bottom  - Used in -IEEEtran
+%\RequirePackage{nath}  - Do Not use
+%\RequirePackage{amscd} - Do Not use
+
+%\RequirePackage{amsfonts} - Used in -IEEEtran
+%\RequirePackage{mathtools} - loads amsmath Used in -IEEETran
+%\RequirePackage{mathabx} - Used in -IEEEtran (not compatible maybe in IEEE)
+\RequirePackage{mathrsfs}
+%%\RequirePackage[toc,page]{appendix}  - Used in -IEEEtran
+%%\RequirePackage{array}
+%%\RequirePackage{bbm}
+%%\RequirePackage{bigints}
+\RequirePackage{bm}
+%\RequirePackage[font=scriptsize]{caption}  - Used in -IEEEtran
+%\RequirePackage{cite}  - Used in -IEEEtran
+%%\RequirePackage{color} 
+\RequirePackage{dsfont}
+%%\RequirePackage{enumerate}
+%%\RequirePackage{epsfig}
+%\RequirePackage{epstopdf} - Not compatible with pdfLatex
+%%\RequirePackage{epic}
+%\RequirePackage{etoolbox}% - No need to load
+\RequirePackage{everyhook}
+%%\RequirePackage{letltxmacro}
+
+\makeatletter 
+%--------------------------------------------
+% 	Packages should Not be loaded for Beamer
+%--------------------------------------------
+%\@ifclassloaded{beamer}{\RequirePackage{bibentry}}{\RequirePackage{cite}}  - Used in -IEEEtran
+%\@ifclassloaded{beamer}{}{\RequirePackage{enumitem}} - Used in -IEEEtran
+%\@ifclassloaded{beamer}{}{\RequirePackage{IEEEtrantools}}  - Used in -IEEEtran
+%%\@ifclassloaded{beamer}{}{\RequirePackage{fancyhdr}}
+%%\@ifclassloaded{beamer}{}{\RequirePackage{framed}}
+%%\@ifclassloaded{beamer}{}{\RequirePackage{listings}}
+%%\@ifclassloaded{beamer}{}{\RequirePackage[stable]{footmisc}} 
+%\@ifclassloaded{beamer}{}{\RequirePackage{graphicx}}  - Used in -IEEEtran
+%\@ifclassloaded{beamer}{}{\RequirePackage[colorlinks=true, pdfstartview=FitV, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}} - Not allowed in -IEEEtran
+
+%\@ifclassloaded{beamer}{}{\RequirePackage[geometry]{ifsym}}
+%%\@ifclassloaded{beamer}{}{\RequirePackage{ifsym}}
+%\@ifclassloaded{beamer}{}{\RequirePackage{multirow}}
+%\@ifclassloaded{beamer}{}{\RequirePackage[parfill]{parskip}}  
+%\@ifclassloaded{beamer}{}{\RequirePackage{psfrag}}
+%\@ifclassloaded{beamer}{}{\RequirePackage{relsize}}
+%\@ifclassloaded{beamer}{}{\RequirePackage{rotating}}
+%\@ifclassloaded{beamer}{}{\RequirePackage{scalerel}}
+%\@ifclassloaded{beamer}{}{\RequirePackage{subcaption}} - Used in -IEEEtran
+%\@ifclassloaded{beamer}{}{\RequirePackage{url}}
+\@ifclassloaded{beamer}{}{\RequirePackage{xspace}}
+%%\@ifclassloaded{beamer}{}{\RequirePackage{xstring}}
+\@ifclassloaded{beamer}{}{\RequirePackage{xparse}}
+%\@ifclassloaded{beamer}{}{\RequirePackage{yhmath}}
+%
+
+%--------------------------------------------
+% 	Packages only for beamer
+%--------------------------------------------
+\@ifclassloaded{beamer}{\RequirePackage[style= authoryear-comp,backend=bibtex]{biblatex}}{}
+
+%--------------------------------------------
+% 	Packages that Should be loaded last
+%--------------------------------------------
+
+\@ifclassloaded{beamer}{\RequirePackage{amssymb}}{\RequirePackage{amssymb}} % Load Last to ensure right symbols are loaded
+\@ifclassloaded{beamer}{\RequirePackage{breqn}}{\RequirePackage{breqn}} % Load last + includes etoolbox package.
+
+
+\makeatother
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	THEOREM ENVIRONNEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\@ifclassloaded{beamer}{}{\newtheorem{remark}{Remark}}
+\@ifclassloaded{beamer}{}{\newtheorem{theorem}{Theorem}}
+\@ifclassloaded{beamer}{}{\newtheorem{proposition}{Proposition}}
+\@ifclassloaded{beamer}{}{\newtheorem{lemma}{Lemma}}
+\@ifclassloaded{beamer}{}{\newtheorem{corollary}[lemma]{Corollary}}
+\@ifclassloaded{beamer}{}{\newtheorem{example}{Example}}
+\@ifclassloaded{beamer}{}{\newtheorem{problem}{Problem}}
+\@ifclassloaded{beamer}{}{\newtheorem{definition}{Definition}}
+%\@ifclassloaded{beamer}{}{\numberwithin{theorem}{section}}
+%\@ifclassloaded{beamer}{}{\numberwithin{proposition}{subsection}}
+%\@ifclassloaded{beamer}{}{\numberwithin{lemma}{section}}
+%\@ifclassloaded{beamer}{}{\numberwithin{example}{section}}
+%\@ifclassloaded{beamer}{}{\numberwithin{problem}{subsection}}
+%\@ifclassloaded{beamer}{}{\numberwithin{definition}{section}}
+\makeatother
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Function to Generate Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Automatic \{ ( [
+%--------------------------
+% Fixed to Atom structure by Mateus Araújo, Philipp Stephani and Heiko Oberdiek
+\let\oleft\left
+\let\oright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\oleft}
+\renewcommand{\right}{\aftergroup\egroup\oright}
+
+% Need to store original { ( [
+\let\lregbrac=\{
+\let\rregbrac=\}
+%\let\lregpar =(
+%\let\rregpar =)
+%\let\lregpsb=[
+%\let\rregsb=]
+
+%use macro to substitude only in mathmode
+\newcommand{\mathdef}[2]{%
+  \PushPostHook{math}{\def#1{#2}}  \PushPostHook{display}{\def#1{#2}}
+  }
+  
+\mathdef{\{}{\mleft\lregbrac}%
+\mathdef{\}}{\mright\rregbrac}%
+
+\begingroup
+  \catcode`(\active \xdef({\mleft\string(} 
+  \catcode`)\active \xdef){\mright\string)}
+\endgroup
+\begingroup
+  \catcode`[\active \xdef[{\mleft\string[}
+  \catcode`]\active \xdef]{\mright\string]}
+\endgroup
+
+% NOTE: the use mleft and mright is to follow IEEEtran complience
+
+% Declare the token and 8000 to only apply change in math mode 
+\mathcode`(="8000 \mathcode`)="8000
+\mathcode`[="8000 \mathcode`]="8000
+
+\newcommand{\parenth}[1]{\left( #1 \right)}
+\newcommand{\sqbrack}[1]{\left[ #1 \right]}
+\newcommand{\braces}[1]{\left\lregbrac #1 \right\rregbrac}
+
+%    Auto-generate commands
+%--------------------------
+\makeatletter
+\newcommand{\generateb}[4]{% This command puts the new comandletter beofre the prefix e.g: for descriptor = vec range = A-Z will yield \Avec, \Bvec, ... \Zvec
+  %#1 = prefix, #2 = macro, #3 = starting point, #4 = end point
+  \def\@tempa{#1} % we don't want to lowercase it
+  \count@=`#3
+  \loop
+  \begingroup\lccode`?=\count@
+  \lowercase{\endgroup\@namedef{?\@tempa}{#2{?}}}%
+  \ifnum\count@<`#4
+  \advance\count@\@ne
+  \repeat
+}
+
+\newcommand{\generatel}[4]{% This command puts the new comandletter beofre the prefix e.g: for descriptor = vec range = A-Z will yield \vecA, \vecB, ... \vecZ
+  %#1 = prefix, #2 = macro, #3 = starting point, #4 = end point
+  \def\@tempa{#1} % we don't want to lowercase it
+  \count@=`#3
+  \loop
+  \begingroup\lccode`?=\count@
+  \lowercase{\endgroup\@namedef{\@tempa ?}{#2{?}}}%
+  \ifnum\count@<`#4
+  \advance\count@\@ne
+  \repeat
+}
+\makeatother
+
+%\renewcommand{\hat}{\smash{\hat}}
+\let\nhat\hat
+\renewcommand{\hat}[1]{\smash{\nhat{\text{$#1$}}}}
+%\renewcommand{\hat}[1]{\smash{\hat{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Generation of Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\generatel{c}{\DefaultFontSets}{A}{Z}
+\generateb{s}{\DefaultFontSets}{A}{Z}
+\generateb{v}{\DefaultFontVectors}{a}{z}
+\generateb{m}{\DefaultFontMatrices}{A}{H}
+\generateb{m}{\DefaultFontMatrices}{J}{Z}
+\generateb{ind}{\DefaultFontIndex}{i}{q}  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newfont{\bb}{msbm10 scaled 1100}
+\newfont{\bbb}{msbm10 scaled 700}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	User settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Default Fonts
+%--------------------------
+\newcommand{\DefaultFontSets}[1]{{\mathcal{#1}}}
+\newcommand{\DefaultFontFields}[1]{{\mathscr{#1}}}
+\newcommand{\DefaultFontMatrices}[1]{{\bf{#1}}}
+\newcommand{\DefaultFontVectors}[1]{{\bf{#1}}}
+\newcommand{\DefaultFontIndex}[1]{\mathcal{#1}}
+\newcommand{\DefaultFontGreekLettersBold}[1]{{\bm{#1}}}
+\newcommand{\DefaultFontDataSet}[1]{\bm{#1}}
+\newcommand{\DefaultFontCommunications}[1]{{\mathrm{#1}}}
+\newcommand{\DefaultFontFoo}[1]{\mathsf{#1}}
+\newcommand{\DefaultFontNames}[1]{{#1}} 
+\newcommand{\DefaultFontDomainas}[1]{{\mathds{#1}}}           % Samir's font for Domains
+%\newcommand{\DefaultFontDomainas}[1]{\hbox{\bb{#1}}}       % Inaki's font for Domains
+%
+%    Default Variables
+%--------------------------
+\newcommand{\uset}{\DefaultFontSets{O}}
+\newcommand{\DefualFieldMeasSpace}{\field{F}}              
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Fundamental Sets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ints}{\DefaultFontDomainas{N}}
+\newcommand{\relativeints}{\DefaultFontDomainas{Z}}
+\newcommand{\rationals}{\DefaultFontDomainas{Q}}
+\newcommand{\reals}{\DefaultFontDomainas{R}}
+\newcommand{\posreals}{\DefaultFontDomainas{R}^{+}_0}
+\newcommand{\ereals}{\overline{\DefaultFontDomainas{R}}} %extended Reals
+\newcommand{\complex}{\DefaultFontDomainas{C}}
+
+
+\newcommand{\CC}{\DefaultFontDomainas{C}}
+\newcommand{\RR}{\DefaultFontDomainas{R}}
+\newcommand{\PP}{\DefaultFontDomainas{P}}
+\newcommand{\QQ}{\DefaultFontDomainas{Q}}
+\newcommand{\ZZ}{\DefaultFontDomainas{Z}}
+\newcommand{\FF}{\DefaultFontDomainas{F}}
+\newcommand{\GG}{\DefaultFontDomainas{G}}
+\newcommand{\EE}{\DefaultFontDomainas{E}}
+\newcommand{\NN}{\DefaultFontDomainas{N}}
+\newcommand{\KK}{\DefaultFontDomainas{K}}
+\renewcommand{\SS}{\DefaultFontDomainas{S}}
+\newcommand{\CCC}{\hbox{\scriptsize{\DefaultFontDomainas{C}}}} % Samir's version
+%\newcommand{\CCC}{\hbox{\bbb{C}}}    % Inaki's font for Domains
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Mathematical Operator
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ds}{\displaystyle}
+%\renewcommand{\d}{\mathrm{d}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\normtwo}[1]{\left\| #1 \right\|_2}
+\newcommand{\abs}[1]{\,\left| #1 \right|}
+\newcommand{\pliminf}{\mathop{\mathrm{P-liminf }}}
+\newcommand{\plimsup}{\mathop{\mathrm{P-limsup }}}
+\newcommand{\intsup}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\intinf}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\nll}{\centernot{\ll}}
+
+
+\newcommand{\txtand}{\mbox{ and }}
+\newcommand{\sfT}{\textsf{T}}
+\newcommand{\ball}[2]{\mathcal{B}_{#2}\left( #1 \right)}
+
+\newcommand{\set}[1]{\DefaultFontSets{#1}}
+\newcommand{\field}[1]{\DefaultFontFields{#1}}
+\newcommand{\foo}[1]{\DefaultFontFoo{#1}}
+\newcommand{\dset}[1]{\DefaultFontDataSet{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	MACROS Words
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ie}{\textit{i.e.}\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+\newcommand{\eg}{\textit{e.g. }\xspace}
+\newcommand{\cf}{\textit{c.f. }\xspace}
+\newcommand{\iid}{\textit{i.i.d. }\xspace}
+\newcommand{\aesymb}{\ae}
+\renewcommand{\ae}{\textit{almost everywhere}\xspace}
+\newcommand{\aewrt}[1]{\textit{almost everywhere with respect to $#1$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	MACROS Names
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Banach}{\DefaultFontNames{Banach}\xspace}
+\newcommand{\Bernoulli}{\DefaultFontNames{Bernoulli}\xspace}
+\newcommand{\Borel}{\DefaultFontNames{Borel}\xspace }
+\newcommand{\Laplace}{\DefaultFontNames{Laplace}\xspace}
+\newcommand{\Leibniz}{\DefaultFontNames{Leibniz}\xspace}
+\newcommand{\Lebesgue}{\DefaultFontNames{Lebesgue}\xspace}
+\newcommand{\LHopital}{\DefaultFontNames{L'H\^opital}\xspace}
+\newcommand{\Frechet}{\DefaultFontNames{Fr{\'e}chet}\xspace}
+\newcommand{\Fubini}{\DefaultFontNames{Fubini}\xspace}
+\newcommand{\Gateaux}{\DefaultFontNames{Gateaux}\xspace}
+\newcommand{\Gaussian}{\DefaultFontNames{Gaussian}\xspace}
+\newcommand{\Holder}{\DefaultFontNames{H{\"o}lder}\xspace}
+\newcommand{\KullbackLeibler}{\DefaultFontNames{Kullback-Leibler}\xspace}
+\newcommand{\RadonNikodym}{\DefaultFontNames{Radon-Nikodym}\xspace}
+\newcommand{\Riemann}{\DefaultFontNames{Riemann}\xspace}
+\newcommand{\Tonelli}{\DefaultFontNames{Tonelli}\xspace}
+\newcommand{\vonNeumann}{\DefaultFontNames{von Neumann}\xspace}
+\newcommand{\Cauchy}{\DefaultFontNames{Cauchy}\xspace}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\SP}[1]{\textcolor{magenta}{#1}}
+
+%	Communications - General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Tx}{\DefaultFontCommunications{Tx}}
+\newcommand{\Rx}{\DefaultFontCommunications{Rx}}
+\newcommand{\SNR}{\DefaultFontCommunications{SNR}}
+\newcommand{\INR}{\DefaultFontCommunications{INR}}
+\newcommand{\SIR}{\DefaultFontCommunications{SIR}}
+\newcommand{\SINR}{\DefaultFontCommunications{SINR}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Probabilities
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\markov}{\scalebox{.6}{\raisebox{2pt}{$\mathrel{\multimap}\joinrel\mathrel{-}$}}}
+\renewcommand{\Pr}[1]{\mathrm{Pr} \left[#1\right]}
+\newcommand{\Par}{\P} 			% Redefine the existing command P 
+\renewcommand{\P}[1]{
+	\normalexpandarg
+	% check if the argument is uppercase or not
+	\expandafter\IfSubStr{
+		ABCDEFGHIJKLMNOPQRSTUVWXYZ\vec{A}\vec{B}\vec{C}\vec{D}\vec{E}\vec{F}\vec{G}\vec{H}\vec{I}\vec{J}\vec{K}\vec{L}\vec{M}\vec{N}\vec{O}\vec{P}\vec{Q}\vec{R}\vec{S}\vec{T}\vec{U}\vec{V}\vec{W}\vec{X}\vec{Y}\vec{Z}\bar{A}\bar{B}\bar{C}\bar{D}\bar{E}\bar{F}\bar{G}\bar{H}\bar{I}\bar{J}	\bar{K}\bar{L}\bar{M}\bar{N}\bar{O}\bar{P}\bar{Q}\bar{R}\bar{S}\bar{T}\bar{U}\bar{V}\bar{W}\bar{X}\bar{Y}\bar{Z}\tilde{A}\tilde{B}\tilde{C}\tilde{D}\tilde{E}\tilde{F}\tilde{G}\tilde{H}\tilde{I}\tilde{J}\tilde{K}\tilde{L}\tilde{M}\tilde{N}\tilde{O}\tilde{P}\tilde{Q}\tilde{R}\tilde{S}\tilde{T}\tilde{U}\tilde{V}\tilde{W}			\tilde{X}\tilde{Y}\tilde{Z}\dot{A}\dot{B}\dot{C}\dot{D}\dot{E}\dot{F}\dot{G}\dot{H}\dot{I}\dot{J}\dot{K}\dot{L}\dot{M}\dot{N}\dot{O}\dot{P}\dot{Q}\dot{R}\dot{S}\dot{T}\dot{U}\dot{V}\dot{W}\dot{X}\dot{Y}\dot{Z}\breve{A}\breve{B}\breve{C}\breve{D}\breve{E}\breve{F}\breve{G}\breve{H}\breve{I}\breve{J}\breve{K}\breve{L}\breve{M}\breve{N}\breve{O}\breve{P}\breve{Q}\breve{R}\breve{S}\breve{T}\breve{U}\breve{V}\breve{W}\breve{X}\breve{Y}\breve{Z}\check{A}\check{B}\check{C}\check{D}\check{E}\check{F}\check{G}\check{H}\check{I}\check{J}\check{K}\check{L}\check{M}\check{N}\check{O}\check{P}\check{Q}\check{R}\check{S}\check{T}\check{U}\check{V}\check{W}\check{X}\check{Y}\check{Z}\overrightarrow{A}\overrightarrow{B}\overrightarrow{C}\overrightarrow{D}\overrightarrow{E}\overrightarrow{F}\overrightarrow{G}\overrightarrow{H}\overrightarrow{I}\overrightarrow{J}\overrightarrow{K}\overrightarrow{L}\overrightarrow{M}\overrightarrow{N}\overrightarrow{O}\overrightarrow{P}\overrightarrow{Q}\overrightarrow{R}\overrightarrow{S}\overrightarrow{T}\overrightarrow{U}\overrightarrow{V}\overrightarrow{W}\overrightarrow{X}\overrightarrow{Y}\overrightarrow{Z}\overleftarrow{A}\overleftarrow{B}\overleftarrow{C}\overleftarrow{D}\overleftarrow{E}\overleftarrow{F}\overleftarrow{G}\overleftarrow{H}\overleftarrow{I}\overleftarrow{J}\overleftarrow{K}\overleftarrow{L}\overleftarrow{M}\overleftarrow{N}\overleftarrow{O}\overleftarrow{P}\overleftarrow{Q}\overleftarrow{R}\overleftarrow{S}\overleftarrow{T}\overleftarrow{U}\overleftarrow{V}\overleftarrow{W}\overleftarrow{X}\overleftarrow{Y}\overleftarrow{Z}\overline{A}\overline{B}\overline{C}\overline{D}\overline{E}\overline{F}\overline{G}\overline{H}\overline{I}\overline{J}\overline{K}\overline{L}\overline{M}\overline{N}\overline{O}\overline{P}\overline{Q}\overline{R}\overline{S}\overline{T}\overline{U}\overline{V}\overline{W}\overline{X}\overline{Y}\overline{Z}\underline{A}\underline{B}\underline{C}\underline{D}\underline{E}\underline{F}\underline{G}\underline{H}\underline{I}\underline{J}\underline{K}\underline{L}\underline{M}\underline{N}\underline{O}\underline{P}\underline{Q}\underline{R}\underline{S}\underline{T}\underline{U}\underline{V}\underline{W}\underline{X}\underline{Y}\underline{Z}\widehat{A}\widehat{B}\widehat{C}\widehat{D}\widehat{E}\widehat{F}\widehat{G}\widehat{H}\widehat{I}\widehat{J}\widehat{K}\widehat{L}\widehat{M}\widehat{N}\widehat{O}\widehat{P}\widehat{Q}\widehat{R}\widehat{S}\widehat{T}\widehat{U}\widehat{V}\widehat{W}\widehat{X}\widehat{Y}\widehat{Z}\hat{A}\hat{B}\hat{C}\hat{D}\hat{E}\hat{F}\hat{G}\hat{H}\hat{I}\hat{J}\hat{K}\hat{L}\hat{M}\hat{N}\hat{O}\hat{P}\hat{Q}\hat{R}\hat{S}\hat{T}\hat{U}\hat{V}\hat{W}\hat{X}\hat{Y}\hat{Z}
+	}{#1}
+	{P_{#1}}					% if true
+	{P_{\uppercase{#1}}(#1)}		% if false
+}
+\newcommand{\Exp}[2]{\mathds{E}_{#1}\left[ #2 \right]}
+%\newcommand{\Var}[2]{\mathds{V}_{#1}\left[ #2 \right]}
+\newcommand{\ind}[1]{\mathds{1}_{\left\lbrace #1 \right\rbrace}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vector and Matrices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\T}{\sf{T}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\matx}[1]{\underline{\boldsymbol{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Numbers
+%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\newcommand{\inCountForEver}{ \in \mathds{N}}
+\newcommand{\inCountNoOne}{ \in \mathds{N}\setminus \lbrace 1 \rbrace}
+\newcommand{\inCountTwo}{ \in \lbrace 1, 2\rbrace}
+\newcommand{\inCountK}[1]{ \in \lbrace 1, 2, \ldots, #1 \rbrace}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Measure Theory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% operators
+%--------------------------
+\newcommand{\powset}[1]{\DefaultFontFields{P}(#1)}
+\newcommand{\simplex}[1]{\triangle( #1 )}
+\newcommand{\BorSigma}[1]{\DefaultFontFields{B}( #1 )}
+%
+% measure spaces
+%--------------------------
+\newcommand{\powmspc}[2]{( #1, \powset{#1}, #2 )}
+\newcommand{\mspc}[2]{ ( #1, \DefualFieldMeasSpace, #2 )}
+\newcommand{\bormspc}[2]{ ( #1,\mathscr{B}(\reals), #2 )}
+%
+% measurable spaces
+%--------------------------
+\newcommand{\measblespace}[2]{ ( #1, #2 )}
+%\newcommand{\msblspc}[1]{ ( #1, \DefualFieldMeasSpace )}
+\newcommand{\msblspc}[1]{ ( #1, \field{F} )}
+\newcommand{\Bormeasblpace}[1]{ ( #1, \DefaultFontFields{B}( #1 ) )}
+\newcommand{\bormsblspc}[1]{ ( #1, \DefaultFontFields{B}(#1) )}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Game Theory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\BR}{\mathrm{BR}}
+\newcommand{\PoA}{\mathrm{PoA}}
+\newcommand{\PoS}{\mathrm{PoS}}
+\newcommand{\RepGame}{\mathcal{G}}
+\newcommand{\gameNF}{\mathcal{G}}
+\newcommand{\GameNF}{\mathcal{G} = \left(
+	\mathcal{K}, 
+	\left\lbrace\mathcal{A}_k \right\rbrace_{k \in \mathcal{K}},
+	\left\lbrace u_{k}\right\rbrace_{ k \in \mathcal{K}}
+\right)}
+\newcommand{\Left}{{\sf{Left}}}
+\newcommand{\Right}{{\sf{Right}}}
+\newcommand{\Pone}{\text{Player $1$}\xspace}
+\newcommand{\Ptwo}{\text{Player $2$}\xspace}
+\newcommand{\Pith}{\text{Player $i$}\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Information Theory - General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\DMPPC[2]{\left( 
+	\mathcal #1,
+	\mathcal #2,
+	P_{#2|#1}
+\right)}
+\newcommand\DMSDC[3]{\left( 
+	\mathcal #1,
+	\mathcal #2,
+	\mathcal #3,
+	P_{#1},
+	P_{#3|#2#1}
+\right)}
+\newcommand\DMBC[3]{\left( 
+	\mathcal #1,
+	\mathcal #2,
+	\mathcal #3,
+	P_{#2#3|#1}
+\right)}
+\newcommand\DMMAC[3]{\left( 
+	\mathcal #1,
+	\mathcal #2,
+	\mathcal #3,
+	P_{#3|#1#2}
+\right)}
+\newcommand\DMIC[4]{\left( 
+	\mathcal #1,
+	\mathcal #2,
+	\mathcal #3,
+	\mathcal #4,
+	P_{#3#4|#1#2}
+\right)}
+
+% $f$-Divergence
+\newcommand{\KLf}[2]{\DefaultFontFoo{D}_{f}\left(#1 \| #2\right)}
+\NewDocumentCommand{\Divf}{ O{f} m  m}{\DefaultFontFoo{D}_{#1}\left(#2 \| #3\right)}
+
+% Relative Entropy
+\newcommand{\KL}[2]{\DefaultFontFoo{D}\,\hspace{-.2ex}(#1 \| #2)}
+\newcommand{\KLlong}[3][x]{\int \frac{\diff #2}{\diff #3}(#1)\log (\frac{\diff #2}{\diff #3}(#1))\,\diff #3(#1)}
+\newcommand{\KLshort}[3][x]{\int \log (\frac{\diff #2}{\diff #3}(#1))\,\diff #2(#1)}
+
+% Jensen-Shannon Divergence
+\newcommand{\KLsj}[2]{\DefaultFontFoo{D}_{JS}\hspace{-.2ex}\left(#1 \| #2\right)}
+
+%\newcommand{\Pgibbs}[3][x]{#1^{#2 #3}_{ }}
+\NewDocumentCommand{\Pgibbs}{ O{\dset{z}} O{\lambda} O{\Thetam} m  m o }{#4^{(#5, #2 \IfValueT{#6}{, #6})}_{#3|\vect{Z}=#1}}
+\newcommand{\TV}[2]{\norm{#1 - #2}_{\mathrm{TV}}}
+\newcommand{\dens}[2]{\imath_{\uppercase{#1#2}}\left(#1;#2\right)}
+\newcommand{\reldens}[3]{\imath_{#1\|#2}\left(#3\right)}
+\newcommand{\MI}[2]{I\left(#1;#2\right)}
+\newcommand{\entropy}[1]{H\left(#1\right)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Interference channel
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Cldicnfb}{\mathcal{C}}
+\newcommand{\Cldic}{\mathcal{C}_{\mathrm{LDIC}}}
+\newcommand{\Cldicnof}{\mathcal{C}}
+\newcommand{\Cldicfb}{\mathcal{C}_{\mathrm{LDIC/FB}}}
+\newcommand{\Cgic}{\mathcal{C}_{\mathrm{GIC}}}
+\newcommand{\Cgicfb}{\mathcal{C}_{\mathrm{GIC/FB}}}
+\newcommand{\Cgicnof}{\mathcal{C}_{\mathrm{GIC-NF}}}
+\newcommand{\agicnof}{\underline{\mathcal{C}}_{\mathrm{GIC-NF}}}
+\newcommand{\cgicnof}{\overline{\mathcal{C}}_{\mathrm{GIC-NF}}}
+
+\newcommand{\Bldicnfb}{\mathcal{B}}
+\newcommand{\Bldic}{\underline{\mathcal{B}}}
+\newcommand{\Bldicfb}{\overline{\mathcal{B}}}
+\newcommand{\Bldicnof}{\mathcal{B}_{\eta}}
+\newcommand{\Bgicfb}{\mathcal{B}_{\mathrm{GIC/FB}}}
+\newcommand{\underBgic}{\underline{\mathcal{B}}_{\mathrm{GIC}}}
+\newcommand{\overBgic}{\overline{\mathcal{B}}_{\mathrm{GIC}}}
+
+\newcommand{\Nldicnfb}{\mathcal{N}}
+\newcommand{\Nldic}{\mathcal{N}_{\mathrm{LDIC}}}
+\newcommand{\Nldicfb}{\mathcal{N}_{\mathrm{LDIC/FB}}}
+\newcommand{\Nldicnof}{\mathcal{N}_{\eta}}
+\newcommand{\Ngic}{\mathcal{N}_{\mathrm{GIC}}}
+\newcommand{\Ngicfb}{\mathcal{N}_{\mathrm{GIC/FB}}}
+\newcommand{\Ngicnof}{\mathcal{N}_{\eta}}
+\newcommand{\aNgicnof}{{\underline{\mathcal{N}}_{\eta}}}
+\newcommand{\cNgicnof}{{\overline{\mathcal{N}}_{\eta}}}
+\newcommand{\overBgicnof}{\overline{\mathcal{B}}_{\eta}}
+\newcommand{\underBgicnof}{\underline{\mathcal{B}}_{\eta}}
+
+\newcommand{\Uldicnfb}{U}
+\newcommand{\Uldic}{U_{i}}
+\newcommand{\Uldicfb}{U_{i,\mathrm{FB}}}
+
+\newcommand{\underR}{\underline{\mathcal{R}}}
+\newcommand{\overR}{\overline{\mathcal{R}}}
+\newcommand{\underRfb}{\underline{\mathcal{R}}_{\mathrm{FB}}}
+\newcommand{\overRfb}{\overline{\mathcal{R}}_{\mathrm{FB}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Custom command declarations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Vectors
+%--------------------------
+\newcommand{\ellv}{\DefaultFontVectors{\ell}}
+\newcommand{\zerov}{\DefaultFontVectors{0}}
+\newcommand{\onev}{\DefaultFontVectors{1}}
+%
+% Bold greek letters
+%--------------------------
+\newcommand{\alphav}{\DefaultFontGreekLettersBold{\alpha}}
+\newcommand{\betav}{\DefaultFontGreekLettersBold{\beta}}
+\newcommand{\gammav}{\DefaultFontGreekLettersBold{\gamma}}
+\newcommand{\deltav}{\DefaultFontGreekLettersBold{\delta}}
+\newcommand{\etav}{\DefaultFontGreekLettersBold{\eta}}
+\newcommand{\lambdav}{\DefaultFontGreekLettersBold{\lambda}}
+\newcommand{\epsilonv}{\DefaultFontGreekLettersBold{\epsilon}}
+\newcommand{\nuv}{\DefaultFontGreekLettersBold{\nu}}
+\newcommand{\muv}{\DefaultFontGreekLettersBold{\mu}}
+\newcommand{\zetav}{\DefaultFontGreekLettersBold{\zeta}}
+\newcommand{\phiv}{\DefaultFontGreekLettersBold{\phi}}
+\newcommand{\psiv}{\DefaultFontGreekLettersBold{\psi}}
+\newcommand{\thetav}{\DefaultFontGreekLettersBold{\theta}}
+\newcommand{\tauv}{\DefaultFontGreekLettersBold{\tau}}
+\newcommand{\omegav}{\DefaultFontGreekLettersBold{\omega}}
+\newcommand{\xiv}{\DefaultFontGreekLettersBold{\xi}}
+\newcommand{\sigmav}{\DefaultFontGreekLettersBold{\sigma}}
+\newcommand{\piv}{\DefaultFontGreekLettersBold{\pi}}
+\newcommand{\rhov}{\DefaultFontGreekLettersBold{\rho}}
+
+\newcommand{\Gammam}{\DefaultFontGreekLettersBold{\Gamma}}
+\newcommand{\Lambdam}{\DefaultFontGreekLettersBold{\Lambda}}
+\newcommand{\Deltam}{\DefaultFontGreekLettersBold{\Delta}}
+\newcommand{\Sigmam}{\DefaultFontGreekLettersBold{\Sigma}}
+\newcommand{\Phim}{\DefaultFontGreekLettersBold{\Phi}}
+\newcommand{\Pim}{\DefaultFontGreekLettersBold{\Pi}}
+\newcommand{\Psim}{\DefaultFontGreekLettersBold{\Psi}}
+\newcommand{\Thetam}{\DefaultFontGreekLettersBold{\Theta}}
+\newcommand{\Omegam}{\DefaultFontGreekLettersBold{\Omega}}
+\newcommand{\Xim}{\DefaultFontGreekLettersBold{\Xi}}
+%
+% mixed symbols
+%--------------------------
+\DeclareMathOperator{\E}{\mathds{E}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\Ei}{{\rm E}_{\rm i}}
+\DeclareMathOperator{\rea}{{\rm Re}}  %Changed to avoid conflict with matrices
+%
+% Already exist in packages above
+%--------------------------
+%\DeclareMathOperator{\arg}{arg}
+%\DeclareMathOperator{\det}{det}
+%\DeclareMathOperator*{\bigtimes}{\scalerel*{\times}{\sum}} - mathbx
+
+
+\newcommand{\comp}[1]{{#1}^{\mathsf{c}}}
+\newcommand{\img}{{\rm Im}}  %Changed to avoid conflict with matrices
+\newcommand{\eqdef}{\stackrel{\scriptscriptstyle\Delta}{=}}
+\newcommand{\defines}{{\,\,\stackrel{\scriptscriptstyle \bigtriangleup}{=}\,\,}}
+\def\delequal{\mathrel{\ensurestackMath{\stackon[0.7pt]{=}{\scriptscriptstyle\bigtriangleup}}}}
+%\newcommand{\<}{\left\langle}
+%\renewcommand{\>}{\right\rangle}
+\newcommand{\herm}{{\sf H}}
+\newcommand{\transp}{{\sf T}}
+\renewcommand{\vec}{{\rm vec}}
+\newcommand{\Pds}{\mathds{P}}
+\newcommand{\Eds}{\mathds{E}}
+\newcommand{\borelsigma}{\mathscr{B}\left(\reals\right)}
+
+
+\newcommand{\bitz}{\begin{itemize}}
+\newcommand{\eitz}{\end{itemize}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MISC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\nameStyle}{\textit{cgit}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Backwards Compatibility 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Note this commands are here to allow a smooth transition of this style with ongoing work
+% However, we encourage users to use the new notation as commands on this section will be depreciated
+
