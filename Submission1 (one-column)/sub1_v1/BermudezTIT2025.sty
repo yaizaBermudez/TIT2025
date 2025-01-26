@@ -1,0 +1,244 @@
+% !TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%		INRIA-NOTATION PACKAGE
+%				Edited by: 
+%		09 / 02 / 2017 David Kibloff
+%		17 / 04 / 2020 Samir Perlaza
+%		12 / 06 / 2023 Samir Perlaza
+%              24 / 01 / 2025 Yaiza Bermudez
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%			Latex Symbols already defined : 
+%	https://en.wikipedia.org/wiki/Wikipedia:LaTeX_symbols
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{PerlazaTIT2023}[12/06/2023 Inria Notation, V2.0]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\RequirePackage{accents}
+%\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+\RequirePackage[linesnumbered,ruled,vlined]{algorithm2e}
+%\RequirePackage{algorithmic}
+%\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amscd}
+\RequirePackage{amsfonts}
+%\RequirePackage{appendix}
+\RequirePackage{array}
+%\RequirePackage{bbm}
+%\RequirePackage{bigints}
+\RequirePackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\RequirePackage{cite}
+\RequirePackage{color}  
+\RequirePackage{dsfont}
+\RequirePackage{enumerate}
+\RequirePackage{epsfig}
+\RequirePackage{epstopdf}
+\RequirePackage{epic}
+%\RequirePackage{IEEEtrantools}
+%\RequirePackage{fancyhdr}
+%\RequirePackage{framed}
+%\RequirePackage[stable]{footmisc} 
+\RequirePackage{graphicx}
+%\RequirePackage[colorlinks=true, pdfstartview=FitV, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\RequirePackage{hyperref}
+%\RequirePackage[geometry]{ifsym}
+%\RequirePackage{ifsym}
+\RequirePackage{mathrsfs}
+\RequirePackage{mathtools}
+\RequirePackage{multirow}
+\RequirePackage{orcidlink}
+\RequirePackage[parfill]{parskip}  
+\RequirePackage{psfrag}
+\RequirePackage{relsize}
+\RequirePackage{rotating}
+\RequirePackage{stfloats}
+%\RequirePackage{subcaption}
+\RequirePackage{textcomp}
+\RequirePackage{tikz}
+\RequirePackage{url}
+\RequirePackage{verbatim}
+\RequirePackage{xspace}
+\RequirePackage{xstring}
+\RequirePackage{yhmath}
+
+\usetikzlibrary{positioning}
+
+
+%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	SQUEEZE EQUATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\squeezeequ}{\medmuskip=2mu \thinmuskip=1mu \thickmuskip=3mu}
+\newcommand{\middlesqueezeequ}{\medmuskip=1.5mu \thinmuskip=0.5mu \thickmuskip=2.5mu \nulldelimiterspace=-0.5pt \scriptspace=0pt}
+\newcommand{\supersqueezeequ}{\medmuskip=1mu \thinmuskip=0mu \thickmuskip=2mu \nulldelimiterspace=-1pt \scriptspace=0pt}
+\newcommand{\Dsupersqueezeequ}{\medmuskip=0.5mu \thinmuskip=0mu \thickmuskip=1mu \nulldelimiterspace=-1pt \scriptspace=0pt}
+\newcommand{\Tsupersqueezeequ}{\medmuskip=0.1mu \thinmuskip=0mu \thickmuskip=0.1mu \nulldelimiterspace=-1pt \scriptspace=0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	ACCENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Algorithms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetKwInput{KwInput}{Input}                			% Set the Input
+\SetKwInput{KwParameter}{Parameter}                % Set the Parameters
+\SetKwInput{KwOutput}{Output} 				% Set the Output
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	THEOREM ENVIRONNEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+%\numberwithin{assume}{section}
+\newtheorem{lemma}{Lemma}
+%\numberwithin{lemma}{section}
+\newtheorem{theorem}[lemma]{Theorem}
+%\numberwithin{theorem}{section}
+\newtheorem{proposition}[lemma]{Proposition}
+%\numberwithin{proposition}{section}
+\newtheorem{corollary}[lemma]{Corollary}
+%\numberwithin{corollary}{section}
+%
+\newtheorem{example}{Example}
+%\numberwithin{example}{section}
+%
+\newtheorem{definition}{Definition}
+%\numberwithin{definition}{section}
+
+
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\etal}{\textit{et al. }}
+\newcommand{\eg}{\textit{e.g. }}
+\newcommand{\cf}{\textit{cf. }}
+
+%	General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\ind}[1]{\mathds{1}_{\left\lbrace #1 \right\rbrace}}
+\newcommand{\supp}{\mathrm{supp}\,}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\normp}[2]{\left\| #1 \right\|_{#2}}
+\newcommand{\normtwo}[1]{\left\| #1 \right\|_2}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\DeclareMathOperator{\clos}{cl}
+\newcommand{\pliminf}{\mathop{\mathrm{P-liminf }}}
+\newcommand{\plimsup}{\mathop{\mathrm{P-limsup }}}
+\newcommand{\intsup}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\intinf}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\reals}{\mathds{R}}
+\newcommand{\posreals}{\mathds{R}_{+}}
+\newcommand{\ints}{\mathds{N}}
+\newcommand{\rationals}{\mathds{Q}}
+\newcommand{\relativeints}{\mathds{Z}}
+\newcommand{\complex}{\mathds{C}}
+\newcommand{\set}[1]{\mathcal #1}
+\newcommand{\txtand}{\mbox{ and }}
+\newcommand{\sfT}{\textsf{T}}
+\newcommand{\sfc}{\textsf{c}}
+\newcommand{\ball}[2]{\mathcal{B}_{#2}\left( #1 \right)}
+%     Colors
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\SP}[1]{\textcolor{magenta}{#1}}
+ % Vector and Matrices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\matx}[1]{\underline{\boldsymbol{#1}}}
+%     Numbers
+\newcommand{\inCountForEver}{ \in \mathds{N}}
+\newcommand{\inCountNoOne}{ \in \mathds{N}\setminus \lbrace 1 \rbrace}
+\newcommand{\inCountTwo}{ \in \lbrace 1, 2\rbrace}
+\newcommand{\inCountK}[1]{ \in \lbrace 1, 2, \ldots, #1 \rbrace}
+
+%	Measure Theory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\powset}[1]{\mathscr{P}\left( #1 \right)}
+\newcommand{\measpace}[1]{ \left( #1, \powset{#1} \right)}
+\newcommand{\Bormeaspace}[1]{ \left( #1, \mathscr{B}\left( #1 \right) \right)}
+\newcommand{\BorSigma}[1]{  \mathscr{B}\left( #1 \right)}
+\newcommand{\simplex}[1]{\triangle\left( #1 \right)}
+
+
+%	Game Theory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\BR}{\mathrm{BR}}
+\newcommand{\PoA}{\mathrm{PoA}}
+\newcommand{\PoS}{\mathrm{PoS}}
+\newcommand{\gameNF}{\mathcal{G}}
+\newcommand{\GameNF}{\mathcal{G} = \left(
+	\mathcal{K}, 
+	\left\lbrace\mathcal{A}_k \right\rbrace_{k \in \mathcal{K}},
+	\left\lbrace u_{k}\right\rbrace_{ k \in \mathcal{K}}
+\right)}
+\newcommand{\Left}{{\sf{Left}}}
+\newcommand{\Right}{{\sf{Right}}}
+\newcommand{\Pone}{\text{Player $1$}\xspace}
+\newcommand{\Ptwo}{\text{Player $2$}\xspace}
+\newcommand{\Pith}{\text{Player $i$}\xspace}
+%	Information Theory - General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\KL}[2]{D\left( #1 \| #2\right)}
+\newcommand{\TV}[2]{\norm{#1 - #2}_{\mathrm{TV}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Xinying Zou Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Gibbsmeasure}{P^{\left(Q, \lambda\right)}_{\vect{\Theta}| \vect{Z} = \vect{z}}}
+\newcommand{\worstmeasure}[2]{P^{\left(#1,#2\right)}_{\hat{Z}|\vect{\Theta}=\vect{\theta}}}
+\newcommand{\worstmeasurevector}[2]{P^{\left(#1,#2\right)}_{\hat{\vect{Z}}|\vect{\Theta}=\vect{\theta}}}
+\newcommand{\worstmarginalvector}[2]{P^{\left(#1,#2\right)}_{\hat{\vect{Z}}}}
+\newcommand{\RAmeasure}[3]{P^{\left(#1,#2,#3\right)}_{\vect{\Theta}|\hat{\vect{Z}}=\vect{z}}}
+\newcommand{\worst}{P^{(P_{\vect{z}},\beta)}_{\hat{Z}|\vect{\Theta}=\vect{\theta}}}
+\newcommand{\worstgeneral}{P^{(P_{S},\beta)}_{\hat{Z}|\vect{\Theta}=\vect{\theta}}}
+%\newcommand{\worstgeneralvector}{P^{(P_{S},\beta)}_{\hat{\vect{Z}}|\vect{\Theta}=\vect{\theta}}}
+\newcommand{\worstcount}{P^{(\nu,\beta)}_{\hat{Z}|\vect{\Theta}=\vect{\theta}}}
+\newcommand{\worstleb}{P^{(\mu,\beta)}_{\hat{Z}|\vect{\Theta}=\vect{\theta}}}
+\newcommand{\riskL}{\bar{T}(P_{\vect{Z}},\vect{\theta})}
+\newcommand{\lossl}{T_{P_Z,\vect{\theta}}}
+\newcommand{\losslt}{T(P_{Z_t},\vect{\theta})}
+\newcommand{\CDFl}{\mathsf{J}_{P_{S},\vect{\theta}}}
+%\newcommand{\CDFL}{\mathsf{J}_{P_{\riskL}}}
+\newcommand{\solver}{P^{\left(Q, \lambda\right)}_{\vect{\Theta} | \vect{Z} = \vect{z}}}
+\newcommand{\lossltype}{T_{\vect{z},\vect{\theta}}}
+\newcommand{\CDFltype}{\mathsf{J}_{P_{\vect{z},\vect{\theta}}}}
+\newcommand{\CDFlS}{\mathsf{J}_{P_S,\vect{\theta}}}
+
+%%%%%%%%8.20%%%%%%%%%%
+\newcommand{\spnum}{\IEEEeqnarraynumspace}
+\newcommand{\Rloss}{\mathsf{R}_{\vect{\theta}} }
+\newcommand{\loss}{\ell(\vect{\theta},x,y)}
+\newcommand{\CDFlfunction}[1]{\mathsf{J}_{#1,\vect{\theta}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Yaiza Bermudez Notation
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\eqas}[1]{\displaystyle\mathop{ \stackrel{a.s.}{=}}_{#1}}
+\newcommand{\eqasP}{\eqas{P}}
+\newcommand{\abscont}[2]{{#1}\ll{#2}}
+\newcommand{\abscontPQ}{\abscont{P}{Q}}
+
+\newcommand{\RND}[2]{\displaystyle \frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
+\newcommand{\RNDPQ}{\RND{P}{Q}}
+
+  

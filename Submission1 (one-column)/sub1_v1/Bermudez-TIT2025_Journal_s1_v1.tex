@@ -6,12 +6,12 @@
 \usepackage{cite}             % improves presentation of citations
 
 \usepackage[cmex10]{amsmath}	  % Use the [cmex10] option to ensure compliance
-                              % with IEEEXplore (see bare_conf.tex)
+                              % with Xplore (see bare_conf.tex)
 \usepackage{amsfonts}
 \interdisplaylinepenalty=1000 % As explained in bare_conf.tex
 \usepackage{mleftright}       % fix to wrong spacing of \left-,
                  			  % \middle- \right-commands
-\usepackage{cgitIEEE}		  % The following package auto scales 
+\usepackage{BermudezTIT2025}		  % The following package auto scales 
 							  % (,{ and [ to be equivalent to \left(,
 							  % \left{ and \left[ only in mathmode.
 \mleftright
@@ -30,33 +30,32 @@
 \usepackage{graphicx}
 %\usepackage{orcidlink}
 
-\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\hyphenation{op-tical net-works semi-conduc-tor -Xplore}
 % updated with editorial comments 12/8/2023, 8/9/2021
 \usepackage{orcidlink}
 \usepackage{balance}
-
 
 
 \begin{document}
 
 \title{Title Journal}
 
-\author{Author 1{\orcidlink{0009-0009-2038-9985}},
-Author 2{\orcidlink{0000-0001-5597-1718}},
-Author 3{\orcidlink{0000-0002-1887-9215}}, and 
-Author 4{\orcidlink{0000-0002-2062-131X}}% <-this % stops a space
-\thanks{
-Author 1 is with the Department of Automatic Control \& Systems Engineering, The University of Sheffield, Sheffield S1 3JD, U.K.; and also with INRIA, Centre Inria d'Universit\'e C\^ote d'Azur, 06902 Sophia Antipolis, France (e-mail: jdaunastorres1@sheffield.ac.uk).
-
-Author 2 is with the Department of Automatic Control and Systems Engineering, The University of Sheffield, Sheffield S1 3JD, U.K.; and also with the Department of Electrical and Computer Engineering, Princeton University, Princeton, NJ 08544 USA (e-mail: esnaola@sheffield.ac.uk).
-
-Author 3 is with INRIA, Centre Inria d'Universit\'e C\^ote d'Azur, 06902 Sophia Antipolis, France; also with the Department of Electrical and Computer Engineering, Princeton University, Princeton, NJ 08544 USA; and also with the GAATI Mathematics Laboratory, University of French Polynesia, 98702 Faaa, French Polynesia (e-mail: samir.perlaza@inria.fr).
-
-Author 4 is with the Department of Electrical and Computer Engineering, Princeton University, Princeton, NJ 08544 USA (e-mail: poor@princeton.edu).
-
-This paper was presented in part at the IEEE International Symposium on Information Theory (ISIT), Taipei, Taiwan, Jun., 2023 \cite{Perlaza-ISIT2023a}; and appears as an INRIA Technical Report in \cite{InriaRR9508}.
-}
-}
+%\author{Author 1{\orcidlink{0009-0009-2038-9985}},
+%Author 2{\orcidlink{0000-0001-5597-1718}},
+%Author 3{\orcidlink{0000-0002-1887-9215}}, and 
+%Author 4{\orcidlink{0000-0002-2062-131X}}% <-this % stops a space
+%\thanks{
+%Author 1 is with the Department of Automatic Control \& Systems Engineering, The University of Sheffield, Sheffield S1 3JD, U.K.; and also with INRIA, Centre Inria d'Universit\'e C\^ote d'Azur, 06902 Sophia Antipolis, France (e-mail: jdaunastorres1@sheffield.ac.uk).
+%
+%Author 2 is with the Department of Automatic Control and Systems Engineering, The University of Sheffield, Sheffield S1 3JD, U.K.; and also with the Department of Electrical and Computer Engineering, Princeton University, Princeton, NJ 08544 USA (e-mail: esnaola@sheffield.ac.uk).
+%
+%Author 3 is with INRIA, Centre Inria d'Universit\'e C\^ote d'Azur, 06902 Sophia Antipolis, France; also with the Department of Electrical and Computer Engineering, Princeton University, Princeton, NJ 08544 USA; and also with the GAATI Mathematics Laboratory, University of French Polynesia, 98702 Faaa, French Polynesia (e-mail: samir.perlaza@inria.fr).
+%
+%Author 4 is with the Department of Electrical and Computer Engineering, Princeton University, Princeton, NJ 08544 USA (e-mail: poor@princeton.edu).
+%
+%This paper was presented in part at the  International Symposium on Information Theory (ISIT), Taipei, Taiwan, Jun., 2023 \cite{Perlaza-ISIT2023a}; and appears as an INRIA Technical Report in \cite{InriaRR9508}.
+%}
+%}
 
 
 \maketitle
@@ -70,740 +69,869 @@ Supervised Learning, Empirical Risk Minimization; Relative Entropy; Regularizati
 \end{IEEEkeywords}
 
 \section{Introduction}
-\IEEEPARstart{E}{mpirical} risk minimization (ERM) is a central tool in supervised machine learning. Among other uses, it enables the characterization of sample complexity and probably approximately correct (PAC) learning in a wide range of settings~\cite{vapnik1992principles}.
-%
-The application of ERM in the study of theoretical guarantees spans related disciplines such as machine learning \cite{vapnik1964perceptron}, information theory \cite{rodrigues2021information,mezard2009information} and statistics \cite{wainwright2019high, vershynin2018high}.
-%
-Classical problems such as classification\cite{blumer1989learnability,guyon1991structural}, pattern recognition \cite{lugosi1995nonparametric,bartlett1998sample}, regression \cite{vapnik1993local, cherkassky1999model}, and density estimation \cite{lugosi1995nonparametric,vapnik1999overview} can be posed as special cases of the ERM problem \cite{vapnik1999overview,bottou2018optimization}.
-%
-Unfortunately, ERM is prone to training data memorization, a phenomenon also known as overfitting \cite{krzyzak1996nonparametric,deng2009regularized,arpit2017Memorization}. For that reason, ERM is often regularized in order to provide generalization guarantees \cite{hellstrom2023generalization, bousquet2002stability,vapnik2015uniform,aminian2021exact}.
-%
-Regularization establishes a preference over the models by encoding features of interest that conform to prior knowledge.
-%
-In different statistical learning frameworks, such as Bayesian learning \cite{robert2007bayesian,mcallester1998pacBayesian} and PAC learning \cite{valiant1984theory,shawe1997pac,cullina2018pac}, the prior knowledge over the set of models can be described by a reference probability measure.
-%
-More general references can be adapted as proved in \cite{Perlaza-ISIT-2022, perlaza2024ERMRER} for the case of $\sigma$-finite measures. Prior knowledge of the set of datasets can also be represented by probability measures, e.g., the worst-case data-generating probability measure introduced in \cite{zou2024WorstCase}.
-%
-In either case, the solution to the regularized ERM problem can be cast as a probability distribution over the set of models.
-
-A common regularizer of the ERM problem is the relative entropy of the optimization probability measure with respect to a given reference measure over the set of models \cite{vapnik1999overview,raginsky2016information,russo2019much,zou2009generalization}.
-%
-The resulting problem formulation, termed ERM with relative entropy regularization (ERM-RER) has been extensively studied for both the case in which the reference measure is a probability measure \cite{raginsky2016information,russo2019much,zou2009generalization, aminian2022information} and the case in which it is a $\sigma$-finite measure \cite{Perlaza-ISIT-2022, perlaza2024ERMRER, Perlaza-ISIT2023b}. While in both cases the solution is unique and corresponds to a Gibbs probability measure, the existence of the solution is ensured only in the case in which the reference measure is a probability measure~\cite{perlaza2024ERMRER}. 
-%
-Despite the many merits of the ERM-RER formulation, it has some significant limitations.
-%
-Firstly, the absolute continuity of the optimization measure with respect to the reference measure is required for the existence of the corresponding Radon-Nikodym derivative, which is used by the relative entropy regularization. This absolute continuity sets an insurmountable barrier to the exploration of models outside the support of the reference measure. More specifically, models outside the support of the reference measure exhibit zero probability with respect to the Gibbs probability measure solution to ERM-RER, regardless of the evidence provided by the training dataset.
-%
-Secondly, the choice of relative entropy over alternative divergences often follows arguments based on the simplicity of obtaining generalization guarantees in the form of bounds \cite{hellstrom2023generalization}. Nonetheless, such bounds are often hard to calculate and are not always informative when evaluated in practical settings \cite{Perlaza-ISIT2023a, wang2004enhancing,lin2014accelerated,yang2022estimation, zou2024WorstCase, perlaza2024ERMRER, Wu2024OnGeneralization, borjas2024thesis}.
-
-In view of these, exploring the asymmetry of relative entropy is of particular interest to advancing the understanding of entropy regularization in the context of ERM and its role in generalization. Additionally, examining the asymmetry opens novel pathways to overcome some of the constraints imposed by relative entropy regularization. \IEEEpubidadjcol
-% Add transport paper 
-The problem of ERM with a general $f$-divergence regularization has been explored in \cite{teboulle1992entropic} and \cite{beck2003mirror} in the case of a finite countable set of models, and recently extended to uncountable sets of models in \cite{alquier2021non} and \cite{esposito2022GenfDiv}. The authors in \cite{teboulle1992entropic, beck2003mirror, alquier2021non, esposito2022GenfDiv} constrain the optimization domains to sets of measures that are mutually absolutely continuous with respect to the reference probability measure. 
-%
-The use of the relative entropy of the optimization measure with respect to the reference measure as a regularizer in the ERM-RER is termed \mbox{Type-I} ERM-RER. Alternatively, the use of the relative entropy of the reference measure with respect to the optimization measure is termed \mbox{Type-II} ERM-RER.
-%
-Interestingly, the existing results in \cite{teboulle1992entropic, beck2003mirror, alquier2021non}, which lead to special cases of the \mbox{Type-I} and \mbox{Type-II} ERM-RER problems by assuming that $f(x) = -x \log(x)$ and $f(x) = -\log(x)$,  respectively, do not study the impact of the asymmetry of relative entropy.
-%
-Another observation that motivates studying the asymmetry of relative entropy in ERM-RER is that numerical analyses of the \mbox{Type-II} ERM-RER, presented in Section~\ref{sec:logERM_RER}, suggest that it achieves better generalization capabilities compared to \mbox{Type-I} ERM-RER, while maintaining a similar expected empirical risk.
-
-This paper presents the solution to \mbox{Type-II} ERM-RER optimization problem using a new method of proof. In particular,  mutual absolute continuity between the measures involved is not imposed. Nonetheless, mutual absolute continuity is exhibited by the solution as a consequence of the structure of the problem. The key properties of the solution are highlighted, and an equivalence between the \mbox{Type-I} and \mbox{Type-II} ERM-RER problems is presented. This equivalence is achieved by replacing the empirical risk in the \mbox{Type-I} ERM-RER problem with another function, which can be interpreted as a tunable loss function, as described in \cite{liao2018tunable, sypherd2019tunable, kurri2021realizing}.
-%
-The remainder of the paper is organized as follows. Section~\ref{sec:ERMproblem} presents the ERM-RER problem and its  two variations: \mbox{Type-I} and \mbox{Type-II}. 
-%
-%Section~\ref{sec:Type1ERM_RER} describes the \mbox{Type-I} regularization.
-%
-The main contribution of this paper, which is the solution to the \mbox{Type-II} ERM-RER problem, is presented in Section~\ref{sec:SolutionType2}. This section also presents key properties of the solution. Section~\ref{sec:ExpectedER} uses these properties to characterize the expected empirical risk.
-%
-Section~\ref{sec:logERM_RER} studies the equivalence between \mbox{Type-I}  and \mbox{Type-II} ERM-RER problems.
-%
-This work is concluded by Section~\ref{sec:FinalRemarks}, with some final remarks.
-
-
-
-The mathematical notation used throughout the paper is as follows:
-Given a measurable space $\msblspc{\set{M}}$, $\bigtriangleup(\set{M})$ is used to represent the set of probability measures that can be defined over $\msblspc{\set{M}}$. Often, when the sigma-algebra $\field{F}$ is fixed, it is hidden to ease notation. Given a probability measure $Q \in \bigtriangleup(\set{M})$, the subset $\bigtriangleup_{Q}(\set{M})$ of $\bigtriangleup(\set{M})$ contains all probability measures that are absolutely continuous with respect to the measure $Q$. Similarly, the subset $\bigtriangledown_{Q}(\set{M})$ of $\bigtriangleup(\set{M})$ contains all probability measures $P \in \bigtriangleup(\set{M})$ such that the probability measure $Q$ is absolutely continuous with respect to $P$. Finally, the subset $\bigcirc_{Q}(\set{M})$ of $\bigtriangleup(\set{M})$ contains all probability measures that are mutually absolutely continuous with respect to the measure $Q$.
-
 %-------------------------------------------------%
 %
 %           Empirical Risk Minimization
 %
 %-------------------------------------------------%
-\section{Empirical Risk Minimization}
-\label{sec:ERMproblem}
+\section{Folkore Theorems of the Radom-Nikodym derivative}
+\label{sec:FolkRND}
+This section introduces relevant notational conventions alongside the Radon-Nikodym theorem.
 %
-Let~$\set{M}$,~$\set{X}$ and~$\set{Y}$, with~$\set{M} \subseteq \reals^{d}$ and~$d \in \ints$, be sets of \emph{models}, \emph{patterns}, and \emph{labels}, respectively.  
+In particular, some equalities presented in this paper are valid almost surely with respect to a given measure. For clarity, given a measure space $\left( \Omega, \mathscr{F}, P \right)$, the notation $\eqasP$ is introduced and shall be read as ``equal for all $x \in \Omega$ except on a negligible set with respect to $P$''; or equivalently as ``equal almost surely with respect to $P$''. Moreover, given two measures $P$ and $Q$ on the same measurable space, the notation $\abscontPQ$ stands for ``the measure $P$ is absolutely continuous with respect to $Q$''.
 %
-A pair~$(x,y) \in \mathcal{X} \times \mathcal{Y}$ is referred to as a \emph{labeled pattern} or as a \emph{data point}.
+Using this notation, the Radon-Nikodym derivative is introduced by the following theorem.
 %
-Given~$n$ data points, with~$n \in \ints$,  denoted by~$\left(x_1, y_1 \right)$, $\left( x_2, y_2\right)$, $\ldots$, $\left( x_n, y_n \right)$, the corresponding dataset is represented by the tuple
-\begin{equation}\label{EqTheDataSet}
-\vect{z} = \big(\left(x_1, y_1 \right), \left(x_2, y_2 \right), \ldots, \left(x_n, y_n \right)\big)  \in \left( \set{X} \times \set{Y} \right)^n.
-\end{equation}  
-
-Let the function~$f: \set{M} \times \mathcal{X} \rightarrow \mathcal{Y}$ be such that the label assigned to the pattern $x$ according to the model $\vect{\theta} \in \set{M}$ is $f(\vect{\theta}, x)$.
-%
-Let also the function 
-\begin{equation}\label{EqEll}
-\ell: \set{Y} \times \set{Y} \rightarrow [0, \infty)
-\end{equation} 
-be such that given a data point~$(x, y) \in \set{X} \times \set{Y}$, the  risk induced by a model~$\vect{\theta} \in \set{M}$ is ~$\ell\left( f(\vect{\theta}, x), y \right)$.  
-%
-In the following, the risk function~$\ell$ is assumed to be nonnegative and  for all~$y \in \set{Y}$, ~$\ell\left( y , y\right) = 0$.
-
-The \emph{empirical risk} induced by the model~$\vect{\theta}$, with respect to the dataset $\vect{z}$ in~\eqref{EqTheDataSet} is determined by the  function~$\mathsf{L}_{\vect{z}}: \set{M} \rightarrow [0, \infty )$, which satisfies  
-\begin{IEEEeqnarray}{rCl}
-\label{EqLxy}
-\mathsf{L}_{\vect{z}} \left(\vect{\theta} \right)  & = & 
-\frac{1}{n}\sum_{i=1}^{n}  \ell\left( f(\vect{\theta}, x_i), y_i\right).
-\end{IEEEeqnarray}
-%
-Using this notation, the ERM consists of the following optimization problem:
-%
-\begin{equation}\label{EqOriginalOP}
-\min_{\vect{\theta} \in \set{M}} \mathsf{L}_{\vect{z}} \left(\vect{\theta} \right).
+\begin{theorem}[Radon-Nikodym theorem, {\cite[Theorem~2.2.1]{ash2000probability}}]\label{ThRNT}
+Let~$P$ and~$Q$ be two measures on a given measurable space~$\left( \Omega, \mathscr{F}\right)$, such that $Q$ is $
+\sigma$-finite and 
+%$P$ is absolutely continuous with respect to~$Q$
+$ \abscontPQ$. Then, there exists a nonnegative Borel measurable 
+function~$g:~\Omega~\to~\mathbb{R}$ such that for all~$\mathcal{A}\in\mathscr{F}$, 
+\begin{equation}\label{EqRNDa}
+ P(\mathcal{A}) = \int_{\mathcal{A}} g(x) \mathrm{d}Q(x).
 \end{equation}
-%
-Let the set of solutions to the ERM problem in~\eqref{EqOriginalOP} be denoted by
-\begin{equation}\label{EqHatTheta}
-\set{T}\left( \vect{z} \right) \triangleq \arg\min_{\vect{\theta} \in \set{M}}    \mathsf{L}_{\vect{z}} \left(\vect{\theta} \right).
-\end{equation}
-%
-Note that if the set $\set{M}$ is finite, the ERM problem in~\eqref{EqOriginalOP} always possesses a solution, and thus, $\abs{\set{T}\left( \vect{z} \right)} > 0$. Nonetheless, in general, the ERM problem does not necessarily possess a solution, \ie, it might happen that $\abs{\set{T}\left( \vect{z} \right) } = 0$.
-
-%-------------------------------------------------%
-%            Statistical Learning
-%-------------------------------------------------%
-%\subsection{Statistical Learning}
-%
-The PAC and Bayesian frameworks, as discussed in \cite{mcallester1998pacBayesian} and \cite{shawe1997pac},  address the problem in \eqref{EqOriginalOP} by constructing probability measures, conditioned on the dataset $\dset{z}$, from which models are randomly sampled.
-%
-In this context, finding probability measures that are minimizers of the ERM problem in~\eqref{EqOriginalOP} over the set of all probability measures that can be defined on the measurable space~$\msblspc{\set{M}}$, which is denoted by $\bigtriangleup(\set{M})$, requires a metric that enables assessing the goodness of the probability measure.
-%
-From this perspective, the underlying assumption in the remainder of this work is that the functions $f$ and $\ell$  in \eqref{EqLxy} are such that for all $(x,y) \in \set{X} \times \set{Y}$,  the function $g_{x,y}:\set{M}\rightarrow[0, \infty)$, such that $g_{x,y}(\thetav)=\ell(f(\thetav,x),y)$, is measurable with respect to the Borel measurable spaces $(\set{M}, \field{F})$ and $\left( \reals, \BorSigma{\reals} \right)$, where $\field{F}$ and $\BorSigma{\reals}$ are respectively the Borel $\sigma$-fields on $\set{M}$ and $\reals$. 
-%-------------------------------------------------%
-%            Definition dataset
-%-------------------------------------------------%
-Under these assumptions, a common metric is the notion of expected empirical risk.
-%
-\begin{definition}[Expected Empirical Risk]
-\label{DefEmpiricalRisk}
-Given the dataset \mbox{$\dset{z} \in  ( \set{X} \times \set{Y} )^n$} in~\eqref{EqTheDataSet},  let  the functional $\mathsf{R}_{\dset{z}}: \bigtriangleup(\set{M}) \rightarrow  [0, \infty  )$~be such that
-%
-\begin{equation}
-\label{EqRxy}
-\foo{R}_{\dset{z}}( P ) \triangleq \int \foo{L}_{ \dset{z} } ( \thetav )  \diff P(\thetav),
-\end{equation}
-%
-where the function $\foo{L}_{\dset{z}}$ is defined in~\eqref{EqLxy}.
-%
-\end{definition}
-%-------------------------------------------------%
-
-In the following section, the \mbox{Type-I} relative entropy regularization is reviewed as it serves as the basis for the analysis of the regularization asymmetry.
-
-
-%-------------------------------------------------%
-%
-%            The \mbox{Type-I} ERM-RER Problem
-%
-%-------------------------------------------------%
-\subsection{The \mbox{Type-I} ERM-RER Problem}
-\label{sec:Type1ERM_RER}
-%
-The \mbox{Type-I} ERM-RER problem is parametrized by a probability measure $Q \in \bigtriangleup(\set{M})$ and a real $\lambda \in \left( 0, \infty\right)$. The measure $Q$ is referred to as the \emph{reference measure} and $\lambda$ as the  \emph{regularization factor}. 
-%
-The {Type-I} ERM-RER problem, with parameters~$Q$ and~$\lambda$, is given by the following optimization problem:
-%
-%\begin{subequations}
-\begin{IEEEeqnarray}{rCl}
-\label{EqOpType1ERMRERNormal}
-    \min_{P \in \bigtriangleup_{Q}(\set{M}) } &\ & \foo{R}_{\dset{z}} ( P )  + \lambda \KL{P}{Q},%\\
-    %\textrm{s.t.} \qquad \  &\ &  \int \frac{\diff P}{\diff Q}(\thetav) \, \diff Q(\thetav) = 1,
-%\label{EqConstratinTrype1}
-\end{IEEEeqnarray}
-%\end{subequations}
-%
-where the functional~$\foo{R}_{\dset{z}}$ is defined in~\eqref{EqRxy}, and the optimization domain~is 
-%
-\begin{IEEEeqnarray}{rCl}
-\label{DefSetTriangUp}
-		\bigtriangleup_{Q}(\set{M})   & \triangleq & \{P\in \bigtriangleup(\set{M}): P\ll Q \},
-\end{IEEEeqnarray}
-%
-with the notation~$P\ll Q$ standing for~$P$ being absolutely continuous with respect to~$Q$.
-
-
-%-------------------------------------------------%
-%     The Solution \mbox{Type-I} ERM-RER Problem
-%-------------------------------------------------%
-%
-The solution to the \mbox{Type-I} ERM-RER problem in~\eqref{EqOpType1ERMRERNormal} is the Gibbs probability measure reported in \cite{Perlaza-ISIT-2022, raginsky2016information} and \cite{russo2019much}. In order to introduce such a measure, consider the function $K_{Q, \dset{z}}: (0,\infty) \rightarrow \reals$ that satisfies for all $t \in \reals$,
-%
-\begin{equation}
-\label{EqDefKfunction}
-		K_{Q, \dset{z}}( t ) = \log (\int \exp(t\foo{L}_{\dset{z}}(\thetav))\diff Q(\thetav)),
-\end{equation}
-%
-with $\foo{L}_{\dset{z}}$ in \eqref{EqLxy}.
-%
-Using this notation, the solution to the  \mbox{Type-I} ERM-RER problem in~\eqref{EqOpType1ERMRERNormal} is  presented by the following lemma.
-
-%-------------------------------------------------%
-%     Theorem Type-I ERM-RER
-%-------------------------------------------------%
-%
-\begin{lemma}[\text{\cite[Theorem $3$]{perlaza2024ERMRER}}]
-\label{lemm_OptimalModelType1}
-%
-The solution to the optimization problem in \eqref{EqOpType1ERMRERNormal} is a unique probability measure, denoted by $\Pgibbs{P}{Q}$, which satisfies for all $\thetav \in \supp Q$,
-%The solution of the \mbox{Type-I} ERM-RER problem in~\eqref{EqOpType1ERMRERNormal}, denoted by $\Pgibbs{P}{Q}\!\in\! \bigtriangleup(\set{M})$, is unique, always exists, and satisfies for all~$\thetav \in \supp Q$
-%
-\begin{equation}
-\label{EqGenpdfType1}
-\frac{\diff \Pgibbs{P}{Q}}{\diff Q} ( \thetav ) = \exp(-K_{Q, \dset{z}}(-\frac{1}{\lambda})-\frac{1}{\lambda}\foo{L}_{\dset{z}}(\thetav)),
-\end{equation}
-%
-where the function $\foo{L}_{\dset{z}}$ is defined in~\eqref{EqLxy} and the function $K_{Q, \dset{z}}$ is defined in~\eqref{EqDefKfunction}.
-%%
-%\begin{equation}\label{EqDefKfunction}
-%		K_{Q, \dset{z}}( t ) = \log (\int \exp(t\foo{L}_{\dset{z}}(\thetav))\diff Q(\thetav)).
-%\end{equation}
-\end{lemma} 
-%-------------------------------------------------%
-
-
-%-------------------------------------------------%
-%
-%       \mbox{Type-II} ERM-RER
-%
-%-------------------------------------------------%
-\subsection{The \mbox{Type-II} ERM-RER Problem}
-\label{sec:Type2ERM_RER}
-
-The \mbox{Type-II} ERM-RER problem is parametrized by a probability measure $Q \in \bigtriangleup(\set{M})$ and a real $\lambda \in (0, \infty)$.
-%
-As in the \mbox{Type-I} ERM-RER problem, the measure $Q$ is referred to as the \emph{reference measure} and $\lambda$ as the \emph{regularization factor}.
-%
-Given the dataset~$\dset{z} \in (\set{X} \times \set{Y})^n$ in~\eqref{EqTheDataSet}, the \mbox{Type-II} ERM-RER problem, with parameters~$Q$ and~$\lambda$, consists of the following optimization problem:
-%
-\begin{IEEEeqnarray}{rcl}
-\label{EqOpType2ERMRERNormal}
-    \min_{P \in \bigtriangledown_{Q}(\set{M}) } &\ & \foo{R}_{\dset{z}} ( P )  + \lambda \KL{Q}{P},
-\end{IEEEeqnarray}
-%
-where the functional~$\foo{R}_{\dset{z}}$ is defined in~\eqref{EqRxy}, and the optimization domain~is 
-%
-\begin{IEEEeqnarray}{rCl}
-\label{DefSetTriangDown}
-		\bigtriangledown_{Q}(\set{M}) & \triangleq & \{P\in \bigtriangleup(\set{M}): Q\ll P \}.
-\end{IEEEeqnarray}
-%
-The difference between \mbox{Type-I} and \mbox{Type-II} ERM-RER problems lies on the regularization. While the former uses the relative entropy $\KL{P}{Q}$, the latter uses $\KL{Q}{P}$. 
-%
-This translates into different optimization domains due to the asymmetry of the relative entropy.
-%
-More specifically, in the \mbox{Type-I} ERM-RER problem, the optimization domain is the set of probability measures on the Borel measurable space $\msblspc{\set{M}}$ that are absolutely continuous with the reference measure $Q$. That is, the set $\bigtriangleup_{Q}(\set{M})$ in~\eqref{DefSetTriangUp}.
-%
-Alternatively, in the \mbox{Type-II} ERM-RER problem, the optimization domain consists of probability measures defined on the Borel measurable space $\msblspc{\set{M}}$, with the additional condition that the reference measure $Q$ must be absolutely continuous with respect to them. This corresponds to the set denoted as $\bigtriangledown_{Q}(\set{M})$ in~\eqref{DefSetTriangDown}.
-%
-From this perspective, the techniques used in \cite{perlaza2024ERMRER} for solving the \mbox{Type-I} ERM-RER no longer hold. As shown in the next section, a new technique is used for solving the \mbox{Type-II} ERM-RER.
-
-The problems in \eqref{EqOpType1ERMRERNormal} and \eqref{EqOpType2ERMRERNormal} exhibit a trivial solutions when the functional $\foo{R}_{\dset{z}}$ is such that for all $P \in \bigtriangleup_{Q}(\set{M})$ or $P \in \bigtriangledown_{Q}(\set{M})$, respectively, it holds that $\foo{R}_{\dset{z}}(P) = c$, for some $c \in [0, \infty)$. In such a case, the solution is unique and equal to the probability measure $Q$, independently of the parameter $\lambda$. In order to avoid this trivial case, the notion of separability of the empirical risk function with respect to the measure $Q$ is borrowed from \cite{perlaza2024ERMRER}. A separable empirical risk function with respect to a given probability measure $P $ is defined as follows.
-
-\begin{definition}[Definition 5 in \cite{perlaza2024ERMRER}]\label{DefSeparableLxy}
-The empirical risk function~$\mathsf{L}_{\vect{z}}$ in~\eqref{EqLxy} is said to be separable with respect to the probability measure~$P \in \bigtriangleup(\set{M})$, if there exist a positive real~$c > 0$  and two subsets~$\set{A}$ and~$\set{B}$ of~$\set{M}$  that are nonnegligible with respect to~$P$, and for all~$(\vect{\theta}_1, \vect{\theta}_2) \in \set{A} \times \set{B}$, 
-\begin{IEEEeqnarray}{rcl}
-\label{EqTwoNonnegligibleSets}
- \mathsf{L}_{\vect{z}} \left( \vect{\theta}_1 \right) &< c <& \mathsf{L}_{\vect{z}}\left(\vect{\theta}_2\right) < \infty .
-\end{IEEEeqnarray}
-\end{definition}
-%
-A nonseparable empirical risk function~$\mathsf{L}_{\vect{z}}$ in~\eqref{EqLxy} with respect to a measure $P$ is a constant almost surely with respect to the measure~$P$. More specifically, there exists a real~$a \geq 0$, such that
-\begin{equation}
-P\left( \left\lbrace \vect{\theta} \in \set{M}: \mathsf{L}_{\vect{z}}\left(\vect{\theta}\right)  = a \right\rbrace\right) = 1.
-\end{equation}
-%
-When the empirical risk function~$\mathsf{L}_{\vect{z}}$ in~\eqref{EqLxy} is nonseparable with respect to all measures in $P \in \bigtriangledown_{Q}(\set{M})$, the trivial case described above is observed. The notion of separable empirical risk functions would play a central role in the study of the optimization problem in \eqref{EqOpType2ERMRERNormal}. 
-
-%-------------------------------------------------%
-%
-%  The Solution \mbox{Type-II} to the ERM-RER
-%
-%-------------------------------------------------%
-\section{The Solution to the \mbox{Type-II} ERM-RER Problem}
-\label{sec:SolutionType2}
- 
-The solution of the \mbox{Type-II} ERM-RER problem in~\eqref{EqOpType2ERMRERNormal} is presented in the following theorem.
-% under the following assumption:
-% \begin{equation}\label{EqZeroInfinity}
-% Q\left( \left\lbrace \vect{\theta} \in \set{M}:  \mathsf{L}_{\vect{z}}\left( \vect{\theta}\right) = \infty \right\rbrace  \right) =0,
-% \end{equation}  
-%where the measure $Q$ is a parameter of the optimization problem in~\eqref{EqOpType2ERMRERNormal} and the function $\mathsf{L}_{\vect{z}}$ is defined in~\eqref{EqLxy}.
-%-------------------------------------------------%
-%        Theorem Radon-Nikodym Derivative
-%-------------------------------------------------%
-\begin{theorem}
-\label{Theo_ERMType2RadNikMutualAbs}
-If there exists a real $\beta$ such that
-%
-\begin{subequations}
-\label{EqType2KrescConstrainAll}
-\begin{equation}
-\label{EqType2KrescConstrain1}
-	\beta \in \{t\in \reals: \forall \thetav \in \supp Q, 0 < {t + \foo{L}_{\dset{z}}(\thetav)}\},
-\end{equation}
-%
-and
-%
-\begin{equation}
-\label{EqType2KrescConstrain2}
-	\int \frac{\lambda}{\beta + \foo{L}_{\dset{z}}(\thetav)} \diff Q(\thetav) = 1,
-\end{equation}
-\end{subequations}
-%
-with the function $\foo{L}_{\dset{z}}$ defined in \eqref{EqLxy}, and $\lambda$ and $Q$ the parameters of the optimization problem in~\eqref{EqOpType2ERMRERNormal},
-%If \eqref{EqZeroInfinity} holds, then 
-then, the solution to such a problem, denoted by $\Pgibbs{\bar{P}}{Q}\!\in\! \bigtriangleup(\set{M})$, is unique and for all $\thetav \in \supp Q$, it satisfies  
-%
-\begin{equation}
-\label{EqGenpdfType2}
-\frac{\diff \Pgibbs{\bar{P}}{Q}}{\diff Q} ( \thetav ) =  \frac{\lambda}{\beta + \foo{L}_{\dset{z}}(\thetav)}.
-\end{equation}
-%
+Moreover, if another function $h$ satisfies for all~$\mathcal{A} \in \mathscr{F}$ that~$P(\mathcal{A}) = \int_{\mathcal{A}} h(x) 
+\mathrm{d}Q(x)$, then $ g(x) \eqas{Q}$$ h(x)$. 
+%almost surely with respect to $Q$.
 \end{theorem}
-%-------------------------------------------------%
+The function $g$ in \eqref{EqRNDa} is often referred to as the Radom-Nikodym derivative of $P$ with respect to $Q$; and is also written as~$\frac{\mathrm{d}P}
+{\mathrm{d}Q} $, such that~$g(x)~=~\frac{\mathrm{d}P}{\mathrm{d}Q} (x).$
 
-Before introducing the proof of Theorem~\ref{Theo_ERMType2RadNikMutualAbs}, two important results are presented. The first result consists in the solution to the optimization problem in~\eqref{EqOpType2ERMRERNormal}  when the optimization domain is restricted to 
-\begin{equation}
-	\label{Eq_ProofThT2_setofmeasures}
-		\bigcirc_Q(\set{M}) \triangleq \bigtriangledown_{Q}(\set{M}) \cap \bigtriangleup_{Q}(\set{M}),
-	\end{equation}
-	%
-	where the sets~$\bigtriangleup_{Q}(\set{M})$ and~$\bigtriangledown_{Q}(\set{M})$ are defined in~\eqref{DefSetTriangUp} and~\eqref{DefSetTriangDown}, respectively.
-	%
-Such an ancillary problem can be formulated as follows:
-\begin{IEEEeqnarray}{rcl}
-	\label{EqOpType2ERMRERancillary}
-	\min_{P \in \bigcirc_{Q}(\set{M}) } &\ & \foo{R}_{\dset{z}} ( P )  + \lambda \KL{Q}{P}.
-	\end{IEEEeqnarray}
+The Radon-Nikodym theorem is the foundational tool from which many folklore theorems in information theory originate. Some of these folklore theorems are thoroughly studied in the following sections.
+%This notation and theorem establish the foundational tools required for the subsequent results and analysis.
+%\end{equation}
+%In Theo 1 if not probability measure the Radon Nikodym derivative can be negative 
+\section{Basic Folklore Theorems}
+%Fundamental could replace basic here
+This section focuses on basic folklore theorems, where ``basic'' denotes their well-established nature. One of the most common folklore theorems is often referred to as the ``change of measure'' theorem.
+%In this section, proofs are presented for several well-known theorems, starting with the change of measure, which is among the most fundamental ones. 
 %
-The solution to the problem in \eqref{EqOpType2ERMRERancillary} is described by the following lemma. 
-	%-------------------------------------------------%
-	%       Lemma Radon-Nikodym Derivative Mutual
-	%-------------------------------------------------%
-	\begin{lemma}
-	\label{lemm_Type2RNDbigcirc}
-The solution to the optimization problem in \eqref{EqOpType2ERMRERancillary} 
-is unique and identical to the probability measure~$\Pgibbs{\bar{P}}{Q}$ in~\eqref{EqGenpdfType2}.
-	\end{lemma}
-	\begin{IEEEproof}
-The proof is presented in Appendix~\ref{app_lemm_Type2RNDbigcirc}.
-	\end{IEEEproof}
-
-The second result consists of comparing the optimal values resulting from the optimization problems in  \eqref{EqOpType2ERMRERNormal} and \eqref{EqOpType2ERMRERancillary}, as shown hereunder.
-
-	%-------------------------------------------------%
-	%        Lemma present \mbox{Type-II} as exp()
-	%-------------------------------------------------%
-	\begin{lemma}
-	\label{lemm_RadNikDevMutualIneq}
-	The optimization problems in \eqref{EqOpType2ERMRERNormal}   and \eqref{EqOpType2ERMRERancillary} satisfy
+\begin{theorem}[Change of Measure]\label{ThCOM}
+Let $P$ and $Q$ be two measures on the measurable space $\left( \Omega, \mathscr{F}\right)$ with $\abscontPQ$; and $Q$ a $\sigma$-finite measure. Let $f: \Omega \to \reals$ be a Borel 
+measurable function such that the integral $\int_{\Omega} f(x) \mathrm{d}P(x)$ exists. Then,  for all $
+\mathcal{A} \in \mathscr{F}$,
+\begin{equation}\label{EqTheoRNProperties1}
+\displaystyle\int_{\mathcal{A}} f(x)\mathrm{d}P(x) = \displaystyle\int_{\mathcal{A}} f(x) \frac{\mathrm{d}P}{\mathrm{d}Q}(x)
+ \mathrm{d}Q(x).
+\end{equation} 
+\end{theorem}
 %
-	\begin{equation}
-	\label{Eq_ProofT2IneOp2}
-		\min_{P \in \bigtriangledown_{Q}} \foo{R}_{\dset{z}}(P) + \lambda \KL{Q}{P}
-		\geq \min_{P \in \bigcirc_{Q}} \foo{R}_{\dset{z}}(P) + \lambda \KL{Q}{P}.
-	\end{equation}
-	\end{lemma}
-	%
-	\begin{IEEEproof}
-		The proof is presented in Appendix~\ref{AppProof_lemm_RadNikDevMutualIneq}.
-		%The proof is presented in \cite{InriaRR9508}.
-	\end{IEEEproof}
-	%-------------------------------------------------%
-Lemma~\ref{lemm_RadNikDevMutualIneq} unveils the fact that the objective function in \eqref{EqOpType2ERMRERNormal} when evaluated at measures whose support extends beyond the support of $Q$ is larger than such an objective function evaluated at measures whose support is identical to the reference measure.
-%
-This includes the case in which the set $\set{T}(\dset{z})$ in~\eqref{EqHatTheta} lies outside the support of $Q$. 
-%
-Using these results, the proof of  Theorem~\ref{Theo_ERMType2RadNikMutualAbs} is as follows.
-
-\begin{IEEEproof}[Proof of  Theorem~\ref{Theo_ERMType2RadNikMutualAbs}]
-The proof follows by observing that from~\eqref{Eq_ProofThT2_setofmeasures},  it holds that
-	%
-	\begin{equation}
-	\label{Eq_ProofT2supset}
-		\bigcirc_{Q}(\set{M}) \subseteq \ \bigtriangledown_{Q}(\set{M}).
-	\end{equation}
-	%
-	Hence, from~\eqref{Eq_ProofT2supset}, it follows that
-	\begin{equation}
-	\min_{P \in \bigtriangledown_{Q}}
-	\foo{R}_{\dset{z}}(P) + \lambda \KL{Q}{P} \leq \min_{P \in \bigcirc_{Q}} \foo{R}_{\dset{z}}(P) + \lambda \KL{Q}{P}.
-	\label{Eq_ProofT2IneOp}
-	\end{equation}
-	%
-From the inequalities in \eqref{Eq_ProofT2IneOp2} and \eqref{Eq_ProofT2IneOp}, it follows that
-	\begin{equation}
-	\min_{P \in \bigtriangledown_{Q}}
-	\foo{R}_{\dset{z}}(P) + \lambda \KL{Q}{P} = \min_{P \in \bigcirc_{Q}} \foo{R}_{\dset{z}}(P) + \lambda \KL{Q}{P}.
-	\label{Eq_ProofT2IneOpSophiaMakesItBig}
-	\end{equation}
-	Thus, the measure $\Pgibbs{\bar{P}}{Q}$ in~\eqref{EqGenpdfType2} is the solution of the optimization problem in~\eqref{EqOpType2ERMRERNormal}, which completes the proof of Theorem~\ref{Theo_ERMType2RadNikMutualAbs}. 
-\end{IEEEproof}
-%-------------------------------------------------%
-
-Lemma~\ref{lemm_RadNikDevMutualIneq} implies that the solution to the optimization problem in~\eqref{EqOpType2ERMRERNormal} is in the set~$\bigcirc_{Q}(\set{M})$ in~\eqref{EqGenpdfType2}.
-%
-A consequence of this observation is the following corollary.
-
-%-------------------------------------------------%
-%        Corollary 
-%-------------------------------------------------%
-\begin{corollary}
-\label{coro_mutuallyAbsCont}
-The probability measures~$Q$ and~$\Pgibbs{\bar{P}}{Q}$ in~\eqref{EqGenpdfType2} are mutually absolutely continuous.
-\end{corollary}
-%-------------------------------------------------%
-%
-Corollary~\ref{coro_mutuallyAbsCont} also follows from Theorem~\ref{Theo_ERMType2RadNikMutualAbs} by observing that the solution to the \mbox{Type-II} ERM-RER  problem in~\eqref{EqOpType2ERMRERNormal} is expressed in terms of its \RadonNikodym derivative with respect to $Q$, which implies the absolute continuity of $\Pgibbs{\bar{P}}{Q}$ with respect to $Q$. The absolute continuity of the measure $Q$ with respect to $\Pgibbs{\bar{P}}{Q}$ follows from the optimization domain of the \mbox{Type-II} ERM-RER  problem.
-%
-From this perspective, Corollary \ref{coro_mutuallyAbsCont} conveys the fact that there does not exist a dataset that can overcome the inductive bias induced by the reference measure $Q$. That is, sets of models outside the support of $Q$ exhibit zero probability measure with respect to the measure $\Pgibbs{\bar{P}}{Q}$.
-
-This observation is important as, at first glance, the \mbox{Type-II} relative entropy regularization for the ERM problem in~\eqref{EqOpType2ERMRERNormal} does not restrict the solution to be absolutely continuous with respect to the reference measure $Q$.
-% 
-However, Theorem~\ref{Theo_ERMType2RadNikMutualAbs} shows that the support of the probability measure $\Pgibbs{\bar{P}}{Q}$ in~\eqref{EqGenpdfType2} collapses into the support of the reference.
-%
-A parallel can be established between \mbox{Type-I} and \mbox{Type-II} cases, as in both cases, the support of the solution is the support of the reference measure.
-%
-In a nutshell, the use of relative entropy regularization inadvertently forces the solution to coincide with the support of the reference regardless of the training data.
-
-
-%-------------------------------------------------%
-%
-%      				Final Remarks
-%
-%-------------------------------------------------%
-\section{Final Remarks}
-\label{sec:FinalRemarks}
-
-This work has introduced the \mbox{Type-II} ERM-RER problem and has presented its solution through Theorem~\ref{Theo_ERMType2RadNikMutualAbs}.
-%%
-The solution highlights that regardless of whether \mbox{Type-I} or \mbox{Type-II} regularization  is used in ERM problems, the models that are considered by the resulting solution are necessarily in the support of the reference measure. In this sense, the restriction over the models introduced by the reference measure cannot be bypassed by the training data when relative entropy is used as the regularizer.
-%
-This limitation has been shown to be a consequence of the equivalence that can be established between \mbox{Type-I} and \mbox{Type-II} regularization. 
-%
-These analytical results lead to providing an operationally meaningful characterization of the expected empirical risk induced by the \mbox{Type-II} solution in terms of the regularization parameters.  
-%
-  
-
-\section{Acknowledgments}
-This work is supported by the University of Sheffield ACSE PGR scholarships, the Inria Exploratory Action -- Information and Decision Making (AEx IDEM), the European Commission through the H2020-MSCA-RISE-2019 project TESTBED2 under grant agreement no. 872172, and in part by a grant from the C3.ai Digital Transformation Institute.
-
-
-
-\appendices
-%-------------------------------------------------%   
-%   ___                  _____           
-%  / _ \                /  ___|          
-% / /_\ \_ __  _ ____  _\ `--.  ___  ___ 
-% |  _  | '_ \| '_ \ \/ /`--. \/ _ \/ __|
-% | | | | |_) | |_) >  </\__/ /  __/ (__ 
-% \_| |_/ .__/| .__/_/\_\____/ \___|\___|
-%       | |   | |                        
-%       |_|   |_|                      
-%-------------------------------------------------%
-%<*appxsec>
-\section{Proof of Lemma~\ref{lemm_Type2RNDbigcirc}}
-%
-%</appxsec>
-
-%-------------------------------------------------%
-% ______                 __ 
-% | ___ \               / _|
-% | |_/ / __ ___   ___ | |_ 
-% |  __/ '__/ _ \ / _ \|  _|
-% | |  | | | (_) | (_) | |  
-% \_|  |_|  \___/ \___/|_| 
-%-------------------------------------------------%
-%<*proof>
 \begin{IEEEproof}
-\label{app_lemm_Type2RNDbigcirc}
+The first part of the proof is developed under the assumption that the function $f$ is simple. That is, for all $x \in \set{X}$, 
 %
-The optimization problem in~\eqref{EqOpType2ERMRERancillary} can be re-written in terms of the Radon-Nikodym derivative of the optimization measure $P$ with respect to the measure $Q$, which yields:
-		%
-		\begin{subequations}
-		\label{EqOpProblemType2fproof}
-		\begin{IEEEeqnarray}{ccl}
-		\min_{P \in \bigcirc_{Q}(\set{M})}
-		&   & \ \int \foo{L}_{\vect{z}}(\thetav)\frac{\diff P}{\diff Q}(\thetav)\, \diff Q(\thetav) 
-		%\nonumber\\ &   & 
-		- \> \lambda \int \log(\frac{\diff P}{\diff Q})\diff Q(\thetav), \\
-		\label{Eq_ProofT2Constraint}
-		\mathrm{s.t.}  & &  \int \frac{\diff P}{\diff Q}(\thetav)  \diff Q(\thetav) = 1.
-		\end{IEEEeqnarray}
-		\end{subequations}
+%To prove this theorem, the classical concept of simple function is used. Recall that a simple function $f$ is a function of the 
+%form 
+ $f(x) = \sum_{i=1}^{m} a_i \mathds{1}_{\mathcal{A}_i} (x)$, for finite $m \in \mathds{N}$, disjoint sets $\mathcal{A}_1$, $\mathcal{A}_2$, $\ldots$, $\mathcal{A}_m$ in $\mathscr{F}$  and reals~$a_1$,~$a_2$,~$\ldots$,~$a_m$. 
+%From Theorem~\ref{ThRNT}, it holds that for all $\mathcal{A} \in \mathscr{F}$,
+%\begin{equation}\label{TheoRNProperties1}
+%P(\mathcal{A}) = \int_{\mathcal{A}}  \frac{\mathrm{d}P}{\mathrm{d}Q}(x)  \mathrm{d}Q(x).
+%\end{equation}
+For all $\mathcal{A} \in \mathscr{F}$, and for all $i \in \lbrace 1,2, \ldots, m \rbrace$, let  $\mathcal{B}_i = 
+\mathcal{A} \cap \mathcal{A}_i$, hence, %for all $\set{A} \in \mathscr{F}$,
+% not a partition anymore just disjoint : forming a partition of $\Omega$
+% nonnegativity dropped
+\begin{eqnarray}
+%\nonumber
+\label{EqMartinezPabon101}
+\int_{\mathcal{A}} f(x)  \frac{\mathrm{d}P}{\mathrm{d}Q}(x) \mathrm{d} Q (x)
+& = & \int_{\mathcal{A}} \frac{\mathrm{d}P}{\mathrm{d}Q} (x) \sum_{i=1}^{n} a_i \mathds{1}_{\mathcal{A}_i} (x) \mathrm{d} Q(x)\\
 %
-The remainder of the proof focuses on the problem in which the optimization is over the function  $\frac{\diff P}{\diff Q}: \set{M} \to \reals$, instead of optimizing the measure $P$. This is due to the fact that for all $P \in \bigcirc_{Q}\left( \set{M} \right)$, the Radon-Nikodym derivate $\frac{\diff P}{\diff Q}$ is unique up to sets of zero measure with respect to $Q$.
+\label{EqMartinezPabon102}
+%&  = &   \sum_{i=1}^{n} \int_{\mathcal{A}} a_i \frac{\mathrm{d}P}{\mathrm{d}Q}(x)  \mathds{1}_{\mathcal{A}_i }(x) \mathrm{d} Q(x) \\
 %
-Let $\mathscr{M}$ be the set of measurable functions $\set{M} \to \reals$ with respect to the measurable spaces $\msblspc{\set{M}}$ and $\left( \reals, \BorSigma{\reals} \right)$ that are absolutely integrable with respect to $Q$.
-That is, for all $\hat{g} \in \mathscr{M}$, it holds that
+%\label{EqMartinezPabon103}
+%%&  = & \sum_{i=1}^{n} a_i \int_{\mathcal{A}} \frac{\mathrm{d}P}{\mathrm{d}Q}(x)  \mathds{1}_{\mathcal{A}_i (x)} \mathrm{d} Q(x)  \\
 %
-\begin{IEEEeqnarray}{rcl}
-\label{EqValioLaPena}
-\int \abs{ \hat{g} (\vect{\theta})} \diff Q(\vect{\theta}) & < & \infty .
-\end{IEEEeqnarray}
+%\label{EqMartinezPabon104}
+&  = & \sum_{i=1}^{n} a_i \int_{\mathcal{B}_i}  \frac{\mathrm{d}P}{\mathrm{d}Q}(x) \mathrm{d} Q(x) \\
+\label{EqMartinezPabon105}
+&  = & \sum_{i=1}^{n} a_i P (\mathcal{B}_i),
+\end{eqnarray} 
+where the equality in \eqref{EqMartinezPabon102} follows from the linearity of the integral \cite[Theorem~1.6.3]{ash2000probability}; 
+and the equality in~\eqref{EqMartinezPabon105} follows from Theorem~\ref{ThRNT}. %\eqref{TheoRNProperties1}.
+%
+On the other hand, for all $\set{A} \in \mathscr{F}$
+\begin{eqnarray}
+\label{EqDiscoverMyReviewer101}
+\displaystyle\int_{\mathcal{A}} f(x) \mathrm{d} P(x)  
+&= & \displaystyle\int_{\mathcal{A}} \displaystyle\sum_{i=1}^{n} a_i \mathds{1}_{\mathcal{A}_i (x)} \mathrm{d} P(x) \\
+\label{EqDiscoverMyReviewer102}
+& =& \displaystyle\sum_{i=1}^{n} \int_{\mathcal{A}} a_i  \mathds{1}_{\mathcal{A}_i (x)}\mathrm{d} P(x)\\
+%\label{EqDiscoverMyReviewer103}
+%& =& \displaystyle\sum_{i=1}^{n} a_i \int_{\mathcal{A}} \mathds{1}_{\mathcal{A}_i (x)} \mathrm{d} Q(x)\\
+%\label{EqDiscoverMyReviewer104}
+&= & \sum_{i=1}^{n} a_i \int_{\mathcal{B}_i} \mathrm{d} P(x)%\\
+\label{EqDiscoverMyReviewer105}
+%& = &
+= \sum_{i=1}^{n} a_i P (\mathcal{B}_i),
+\end{eqnarray}
+%
+where the equality in \eqref{EqDiscoverMyReviewer102} follows from the linearity of the integral \cite[Theorem~1.6.3]
+{ash2000probability}. Hence, from Theorem~\ref{ThRNT}, and equalities \eqref{EqMartinezPabon105} and \eqref{EqDiscoverMyReviewer105}, it follows that 
+when~$f$ is a simple function, the equality in \eqref{EqTheoRNProperties1} holds.  This concludes the first part of the proof.
+
+The second part of the proof proceeds by considering the following observations: $\left(a\right)$ simple functions form a dense subset of the space of Borel measurable functions  \cite[Theorem~1.5.5(b)]{ash2000probability}; and $\left(b\right)$ the integral is a continuous map from that space \cite[Theorem~1.6.2]{ash2000probability}. Hence, from $\left(a\right)$ and $\left(b\right)$, it follows that \eqref{EqTheoRNProperties1} also holds for any Borel measurable function~$f$.
+%
+This completes the proof.
+\end{IEEEproof}
+%
+Another reputed  folklore theorem, which  is often referred to as the ``proportional measures’’ theorem, establishes the explicit forms of the Radon-Nikodym derivatives between two measures, in which one is proportional to the other.
+%
+\begin{theorem}[Proportional Measures]\label{TheoRNDOne}
+Let $P$ and $Q$ be two $\sigma$-
+finite measures on the measurable space $\left( \Omega, \mathscr{F}\right)$, such that for all $\set{A} \in \mathscr{F}$
+\begin{eqnarray}\label{EqEqualMeasuresUpToConstant}
+Q(\set{A}) = c P (\set{A}),
+\end{eqnarray}
+with $c > 0$. Then, for all $x \in \Omega$
+\begin{eqnarray}
+\label{EqThPropconst}
+\frac{\mathrm{d}P}{\mathrm{d}Q} (x) &~\eqas{Q} \frac{1}{c} , \mbox{ and } \frac{\mathrm{d}Q}{\mathrm{d}P} (x) & \eqas{P}  c.
+\end{eqnarray}
+\end{theorem}
+\begin{IEEEproof}
+First, note that \eqref{EqEqualMeasuresUpToConstant} implies that the measures $P$ and $Q$ are mutually absolutely 
+continuous. Hence, from Theorem~\ref{ThRNT}, it follows that for all $\mathcal{A} \in \mathscr{F}$, 
+\begin{equation}
+P\left( \mathcal{A} \right) = \int_{\mathcal{A}} \mathrm{d} P(x) = \int_{\mathcal{A}}   \frac{\mathrm{d}P}{\mathrm{d}Q}(x) \; 
+\mathrm{d}Q(x).
+\end{equation}
+On the other hand, the equality \eqref{EqEqualMeasuresUpToConstant} also  implies 
+\begin{equation}
+P\left( \mathcal{A} \right) = \frac{1}{c} Q(\set{A}) =  \int_{\mathcal{A}} \frac{1}{c}  \mathrm{d} Q(x).
+\end{equation}
+Hence, it follows directly from Theorem~\ref{ThRNT} that the Radon-Nikodym derivative $ \frac{\mathrm{d} P}
+{\mathrm{d} Q}$ is unique almost surely with respect to $Q$. Thus,
+ $\frac{\mathrm{d}P}{\mathrm{d}Q}(x) \eqas{Q} $$\frac{1}{c}$.
+Using similar arguments and the fact that $P$ and $Q$ are mutually absolutely continuous, it is verified that
+ $\frac{\mathrm{d}Q}{\mathrm{d}P}(x) \eqasP$$ c$.
+\end{IEEEproof}
+ In the case in which $c=1$ in \eqref{EqThPropconst}, measures $P$ and $Q$ are identical, thus, $ \frac{\mathrm{d} P}{\mathrm{d} 
+ Q}(x) \eqas{Q}$ $ \frac{\mathrm{d} Q}{\mathrm{d} P}(x) \eqasP $ $1.$
  
-%
-Hence, the optimization problem of interest is:
-%
-\begin{subequations}
-\label{EqOpProblemType2fproof9876}
-\begin{IEEEeqnarray}{ccl}
-\min_{g \in \mathscr{M}} & &  \int \foo{L}_{\vect{z}}(\thetav) g(\thetav)\, \diff Q(\thetav)- \lambda \int \log(g(\thetav))\diff Q(\thetav) \\
-\label{Eq_ProofT2Constraint9876}
-\mathrm{s.t.}  & &  \int g(\thetav)  \diff Q(\thetav) = 1.
-\end{IEEEeqnarray}
-\end{subequations}
-%
-Let the Lagrangian of the optimization problem in~\eqref{EqOpProblemType2fproof9876} be $L: \mathscr{M}\times \reals \rightarrow \reals$ such that
-%
-\begin{IEEEeqnarray}{rcl}
-\label{EqFunctionalL}\label{EqFunctionalAll}
-   L (g, \beta) 
-   & = & \int \foo{L}_{\vect{z}}(\thetav)g(\thetav)\, \diff Q(\thetav) - \lambda \int \log(g(\thetav))\, \diff Q(\thetav)  
-   %\nonumber\\&   & 
-   + \> \beta (\int g(\thetav) \, \diff Q(\thetav)-1) \\
-   & = & \int \Big( g(\thetav) (\foo{L}_{\vect{z}}(\thetav) + \beta)  - \lambda  \log(g(\thetav)) \Big)  \; \diff Q(\thetav)
-   %\nonumber\\&   & 
-   - \> \beta,
-\end{IEEEeqnarray}
-%
-where $\beta$ is a  real that acts as a Lagrange multiplier due to the constraint~\eqref{Eq_ProofT2Constraint9876}.
-%
-Let $\hat{g}: \set{M} \rightarrow \reals$ be a function in $\mathscr{M}$. 
-%
-The Gateaux differential of the functional $L$ in~\eqref{EqFunctionalAll} at $\left(g, \beta\right) \in \mathscr{M}\times \reals$ in the direction of $\hat{g}$ is
-%
-\begin{IEEEeqnarray}{rcl}
-\label{EqNecessaryCondtionType2f}
-    \partial L(g, \beta; \hat{g} ) & \triangleq & \left.\frac{\diff}{\diff \gamma}  r(g + \gamma \hat{g}, \beta) \right|_{\gamma = 0},
-\end{IEEEeqnarray}
-%
-where the function $r:\reals \rightarrow \reals$ is such that for all $\gamma \in (-\epsilon, \epsilon)$, with $\epsilon$ arbitrarily small, 
-%The proof continues under the assumption that the function $g$ and $\hat{g}$ are such that the Gateaux differential in \eqref{EqNecessaryCondtionType2f} exists. Under such an assumption, let the function $r: \reals \rightarrow \reals$ satisfy for all $\gamma \in (-\epsilon, \epsilon)$, with $\epsilon$ arbitrarily small, that
-%
-\begin{subequations}
-\label{EqrType2f}
-\begin{IEEEeqnarray}{rcl}
-    r(\gamma) %& = & L(g + \gamma \hat{g}, \beta) \\ 
-    & = & \int \foo{L}_{\vect{z}}(\thetav)(g (\thetav) + \gamma \hat{g}(\thetav))\, \diff Q(\thetav)
-    %\nonumber \\&   &
-    - \> \lambda \int \log(g(\thetav) + \gamma \hat{g}(\thetav))\, \diff Q(\thetav) 
-    %\nonumber \\ &    & 
-    + \> \beta(\int(g(\thetav)  + \gamma \hat{g}(\thetav))\diff Q(\thetav) - 1) \\
-	& = &  \gamma \int\hat{g}(\thetav)(\foo{L}_{\vect{z}}(\thetav)  +\beta)\diff Q(\thetav) 
-	%\nonumber\\&   &
-	+ \> \lambda \int \log(g(\thetav) + \gamma \hat{g}(\thetav))\, \diff Q(\thetav)
-	%\nonumber\\ &    &
-	+ \int g (\thetav) ( \foo{L}_{\vect{z}}(\thetav)  + \beta) \diff Q(\thetav) - \beta.\label{EqYoLloroCorrigiendoEstaPrueba}
-\end{IEEEeqnarray}
-\end{subequations}
-%
-Note that the first term in \eqref{EqYoLloroCorrigiendoEstaPrueba} is linear with respect to $\gamma$; the second term can be written using the function $\hat{r}:\reals \rightarrow \reals$ in \eqref{EqHatR_lemmAppx} such that
-%
-\begin{IEEEeqnarray}{rCl}
-\label{EqHatR_lemmAppBDef}
-	\hat{r}(\gamma) & = & \int -\log(g(\thetav) + \gamma \hat{g}(\thetav)) \diff Q(\thetav);
-\end{IEEEeqnarray}
-%
-and the remaining terms are independent of $\gamma$.
-
-Hence, based on the fact that the function $\hat{r}$ in \eqref{EqHatR_lemmAppBDef} is differentiable at zero (Lemma~\ref{lemm_ERM_fDR_DiffZero}), so is the function $r$ in \eqref{EqrType2f}, which implies that the Gateaux differential of $\partial L(g,\beta;\hat{g})$ in \eqref{EqNecessaryCondtionType2f} exists.
-
-The derivative of the real function $r$ in \eqref{EqrType2f} is
-
-\begin{IEEEeqnarray}{rcl}
-  \!\!\frac{\diff}{\diff \gamma}r(\gamma)\,& = & \int\hat{g}(\thetav)(\foo{L}_{\vect{z}}(\thetav)  +\beta)\diff Q(\thetav)
-  %\nonumber\\&   &
-  - \lambda \int \frac{\hat{g}(\thetav)}{(g(\thetav) + \gamma \hat{g}(\thetav))} \, \diff Q(\thetav)\\
-  \label{EqDerrType2f} & = & \int\hat{g}(\thetav)(\foo{L}_{\vect{z}}(\thetav)  +\beta \vphantom{\dot{f}} -  \frac{\lambda}{(g(\thetav) + \gamma \hat{g}(\thetav))} )\! \diff Q(\thetav).\IEEEeqnarraynumspace
-\end{IEEEeqnarray}
-From \eqref{EqNecessaryCondtionType2f} and \eqref{EqDerrType2f}, it follows that
-%
-\begin{IEEEeqnarray}{rcl}
-\label{EqGateauxDiffType2f}
-	\partial L(g, \beta; \hat{g} )
-	& = & \int\hat{g}(\thetav)(\foo{L}_{\vect{z}}(\thetav)  +\beta \vphantom{\dot{f}} -  \frac{\lambda}{g(\thetav)} )\! \diff Q(\thetav). 
-\end{IEEEeqnarray}
-%
-The relevance of the Gateaux differential in~\eqref{EqGateauxDiffType2f} stems from \cite[Theorem $1$, page $178$]{luenberger1997bookOptimization}, which unveils the fact that a necessary condition for the functional $L$ in~\eqref{EqFunctionalAll} to have a stationary point at $( \frac{\diff  \Pgibbs{P}{Q}}{\diff Q}, \beta ) \in \set{M} \times [0, \infty)$ is that for all functions $\hat{g} \in \mathscr{M}$,
-%
-\begin{equation}
-\label{EqConditionhiType2f}
-\partial L(\frac{\diff \Pgibbs{P}{Q}}{\diff Q}, \beta; \hat{g}) = 0 .
+The following folklore theorem is often referred to as the ``chain rule''. 
+ %
+ \begin{theorem}[Chain Rule]\label{TheoChainsAndBlood}
+Let $P$, $Q$, and $R$ be three measures on the measurable space $\left( \Omega, \mathscr{F}\right)$ such that 
+$\abscontPQ$; 
+$\abscont{Q}{R}$; 
+and $Q$ and $R$ are $\sigma$-finite measures.  
+Then, 
+\begin{equation}\label{EqLimitedEditions1}
+\frac{\mathrm{d}P}{\mathrm{d}R}(x) \eqas{R} \frac{\mathrm{d}P}{\mathrm{d}Q}(x)  \frac{\mathrm{d}Q}{\mathrm{d}R}(x).
 \end{equation}
+\end{theorem}
 %
-From~\eqref{EqGateauxDiffType2f} and~\eqref{EqConditionhiType2f}, it follows that $\frac{\diff \Pgibbs{P}{Q}}{\diff Q} $ must satisfy for all functions $\hat{g}$ in $\mathscr{M}$ that
-%
-\begin{equation}
-\label{EqIntegralHisZero}
- \int\hat{g}(\thetav)(\foo{L}_{\vect{z}}(\thetav)  + \beta  -  \lambda 
- ( \frac{\diff \Pgibbs{P}{Q}}{\diff Q}(\thetav) )^{-1}  ) \diff Q(\thetav) = 0.
-\end{equation}
-%
-This implies that for all $\thetav \in \supp Q$,
-%
-\begin{equation}
-\label{Eq_ProofT2SemiLemma_proof}
-\foo{L}_{\vect{z}}(\thetav)  +\beta  -  \lambda  (\frac{\diff \Pgibbs{P}{Q}}{\diff Q}(\thetav)  )^{-1}   = 0,
-\end{equation}
-%
-and thus,
-%
-\begin{equation}
-\label{EqKeyNorthStarx}
-  \frac{\diff \Pgibbs{P}{Q}}{\diff Q}(\thetav) = \frac{\lambda}{\beta + \foo{L}_{\dset{z}}(\thetav)},
-\end{equation}
-%
-where $\beta$ is chosen to satisfy \eqref{Eq_ProofT2Constraint9876} and guarantee that for all $\vect{\theta} \in \supp Q$, it holds that $ \frac{\diff \Pgibbs{P}{Q}}{\diff Q}(\thetav) \in (0, \infty)$. That is, 
-\begin{equation}
-\beta \in \left\lbrace t\in \reals: \forall \vect{\theta} \in \supp Q , 0 < \frac{\lambda}{t + \foo{L}_{\vect{z}}(\thetav)}  \right\rbrace, \text{ and} 
-\end{equation}
-%
-\begin{equation}
-1 = \int \frac{\lambda}{\foo{L}_{\dset{z}}(\thetav)+\beta}\diff Q(\thetav).
-\end{equation}
-which is an assumption of the theorem.
-
-The proof continues by verifying that the measure $\Pgibbs{\bar{P}}{Q}$ that satisfies \eqref{EqKeyNorthStarx} is the unique solution to the optimization problem in \eqref{EqOpProblemType2fproof}. Such verification is done by showing that the objective function in \eqref{EqOpProblemType2fproof} is strictly convex with the optimization variable. Let $P_1$ and $P_2$ be two different probability measures in $\msblspc{\set{M}}$ and let $\alpha$ be in $(0,1)$. Hence,
-%
-\begin{IEEEeqnarray}{rCl}
-	%\IEEEeqnarraymulticol{3}{l}{
-	\foo{R}_{\dset{z}} (\alpha P_1 +(1-\alpha)P_2) + \lambda\KL{\alpha P_1 +(1-\alpha)P_2}{Q}
-	%}\nonumber \quad\\
-	& = & \foo{R}_{\dset{z}}(\alpha P_1) + \foo{R}_{\dset{z}}((1-\alpha)P_2) 
-	%\nonumber\\ &   & 
-	+ \lambda\KL{\alpha P_1 +(1-\alpha)P_2}{Q}\\
-	& > & \alpha\foo{R}_{\dset{z}}( P_1) + (1-\alpha)\foo{R}_{\dset{z}}(P_2) \nonumber\\
-	&   & +\> \lambda(\alpha\KL{ P_1}{Q}+ (1-\alpha)\KL{P_2}{Q})
-\end{IEEEeqnarray}
-
-where the functional $\foo{R}_{\dset{z}}$ is defined in \eqref{EqRxy}. 
-%
-The equality above follows from the properties of the Lebesgue integral, while the inequality follows from \cite[Theorem 2]{perlaza2024ERMRER}.
-%
-This proves that the solution is unique due to the strict concavity of the objective function, which completes the proof.
-%	 
-\end{IEEEproof}
-%</proof>
-%-------------------------------------------------%
-
-This appendix concludes by presenting Lemma~\ref{lemm_ERM_fDR_DiffZero} used in the proof of Lemma~\ref{lemm_Type2RNDbigcirc}
-\begin{lemma}
-\label{lemm_ERM_fDR_DiffZero}
-Let $\field{M}$ be the set of measurable functions $h:\set{M} \rightarrow \reals$, with respect to the measurable space $\msblspc{\set{M}}$ and $\bormsblspc{\reals}$. Let $\field{S}$ be the subset of $\field{M}$ including all nonnegative functions that are absolutely integrable with respect to a probability measure $Q$. That is, for all $h \in \field{S}$, it holds that
-%
-\begin{IEEEeqnarray}{rCl}
-\int \abs{h(\thetav)}\diff Q(\thetav) & < & \infty.
-\end{IEEEeqnarray}
-%
-Let the function $\hat{r}: \reals \rightarrow \reals$ be such that
-%
-\begin{IEEEeqnarray}{rCl}
-\label{EqHatR_lemmAppx}
-	\hat{r}(\alpha) & = & \int -\log(g(\thetav) + \alpha h(\thetav)) \diff Q(\thetav),
-\end{IEEEeqnarray}
-%
-for some functions $g$ and $h$ in $\field{S}$ and $\alpha \in (-\epsilon, \epsilon)$, with $\epsilon > 0$ arbitrarily small. The function $\hat{r}$ in \eqref{EqHatR_lemmAppx} is differentiable at zero.
-\end{lemma}
 \begin{IEEEproof}
-The objective is to prove that the function $\hat{r}$ in \eqref{EqHatR_lemmAppx} is differentiable at zero, which boils down to proving that the limit
+From the assumptions of the theorem, it follows that for all $\mathcal{A} \in \mathscr{F}$, 
+\begin{eqnarray}
+\label{EqChainRule2}
+P (\mathcal{A}) 
+& = & \int_{\mathcal{A}} \mathrm{d} P(x) 
+= \int_{\mathcal{A}} \frac{\mathrm{d} P}{\mathrm{d} Q}(x) \mathrm{d} Q(x)\\
+\label{EqChainRule3}
+& = &  \int_{\mathcal{A}} \frac{\mathrm{d} P}{\mathrm{d} Q}(x)\frac{\mathrm{d} Q}{\mathrm{d} R}(x) \mathrm{d} R(x)\\
+\label{EqChainRule4} 
+& = & \int_{\mathcal{A}} \frac{\mathrm{d} P}{\mathrm{d} R}(x) \mathrm{d} R(x),
+\end{eqnarray}
+where 
+the second equality in \eqref{EqChainRule2} follows from Theorem~\ref{ThRNT}; and
+the equality in \eqref{EqChainRule3} follows from Theorem~\ref{ThCOM} . 
 %
-\begin{IEEEeqnarray}{rCl}
-\label{EqLimf}
-	& \lim_{\delta \rightarrow 0} \frac{1}{\delta}(\hat{r}(\alpha+\delta) -\hat{r}(\alpha))&
-\end{IEEEeqnarray}
+The equality in~\eqref{EqChainRule4} holds from Theorem~\ref{ThRNT} and by noticing that $\abscont{P}{R}$. 
 %
-exists for all $\alpha \in (-\epsilon, \epsilon)$, with $\epsilon > 0$ arbitrarily small. 
+Therefore, the equalities in \eqref{EqChainRule3} and \eqref{EqChainRule4} together with Theorem~\ref{ThRNT} imply~\eqref{EqLimitedEditions1}, which completes the proof.
+\end{IEEEproof}
 %
-Let the function $f:(0,\infty)\rightarrow \reals$ be a function such that
+The following folklore theorem shows the connection between the Radon-Nikodym derivative and its multiplicative inverse.
 %
-\begin{IEEEeqnarray}{rCl}
-	f(x) & = & -\log(x).
-\end{IEEEeqnarray}
+\begin{theorem}[Multiplicative Inverse]\label{TheoInverseRND}
+Let $P$ and $Q$ be two mutually absolutely continuous measures on the measurable space $\left( \Omega, \mathscr{F}\right)$; and assume that for all $x \in \Omega$,  $\frac{\mathrm{d}Q}{\mathrm{d}P}(x) > 0$. 
+Then,  
+\begin{eqnarray}\label{EqLimitedEditions}
+\frac{\mathrm{d}P}{\mathrm{d}Q}(x) &  \eqas{Q} & \left( \frac{\mathrm{d}Q}{\mathrm{d}P}(x) \right)^{-1}.
+\end{eqnarray}
+\end{theorem}
+\begin{IEEEproof}
+From Theorem~\ref{TheoChainsAndBlood}, it follows that 
+\begin{eqnarray}
+\label{EqSomebodyCalls}
+\frac{\mathrm{d} P}{\mathrm{d} Q} (x) \frac{\mathrm{d} Q}{\mathrm{d} P} (x)  \eqas{Q} \frac{\mathrm{d} Q}{\mathrm{d}Q}(x) \eqas{Q}  1,
+\end{eqnarray}
 %
-Note that the function $\hat{r}$ can be written in terms of $f$ as follows
+where the last equality follows from Theorem~\ref{TheoRNDOne}, with~$c~=~1$. This completes the  proof.
+\end{IEEEproof}
+The subsequent folklore theorem establishes the linearity of the Radon-Nikodym derivative.
+\begin{theorem}[Linearity]\label{TheoRNDadditivity}
+Let~$P$ be a $\sigma$-ﬁnite measure on~$\left(\Omega, \mathscr{F}\right)$ and let also~$Q_1 , Q_2 , \ldots , Q_n$ be ﬁnite measures on~$\left(\Omega, \mathscr{F}\right)$ absolutely continuous with respect to~$P$. Let~$c_1 , c_2 , \ldots , c_n$ be positive reals; and let $S$ be a finite measure on $\left(\Omega, \mathscr{F}\right)$ such that for all~$\set{A} \in \mathscr{F}$, 
+$S(\set{A}) = \sum_{t=1}^n c_t Q_t(\set{A})$.
+Then,  
+\begin{eqnarray}
+\label{EqJanuary18at22h41inDubai}
+\frac{\mathrm{d} S}{\mathrm{d}P}(x) & \eqasP & \sum_{t =1}^{n} c_t \frac{\mathrm{d}Q_t}{\mathrm{d}P} (x).
+\end{eqnarray}
+\end{theorem}
+\begin{IEEEproof}
 %
-\begin{IEEEeqnarray}{rCl}
-\label{EqHatR_lemmAppx_fRevKL}
-	\hat{r}(\alpha) & = & \int f(g(\thetav) + \alpha h(\thetav)) \diff Q(\thetav),
-\end{IEEEeqnarray}
+The proof starts by noticing that, from the assumptions of the theorem, it holds that $\abscont{S}{P}$. Hence, for all~$\set{A} \in \mathscr{F}$, it holds that
+\begin{eqnarray} \label{EqProofTheoRNDadditivity2}
+\label{EqChangeofmeasure105}
+ & &  \int_{\mathcal{A}} \frac{\mathrm{d} S}{\mathrm{d}P}(x) \mathrm{d} P(x)  = \int_{\mathcal{A}}\mathrm{d} S(x)  =  \sum_{t=1}^n c_t Q_t(\mathcal{A}) \\ 
+\label{EqChangeMeasure}
+&= &\sum_{t=1}^n \int_{\mathcal{A}} c_t \mathrm{d} Q_t(x)   = \sum_{t=1}^n \int_{\mathcal{A}} c_t \frac{ \mathrm{d} Q_t}{\mathrm{d}P}(x) \mathrm{d} P(x) \\ 
+\label{EqAddIntegral}
+&= &\int_{\mathcal{A}} \sum_{t=1}^n c_t \frac{ \mathrm{d} Q_t}{\mathrm{d}P}(x) \mathrm{d} P(x),
+\end{eqnarray}
+where the first equality in~\eqref{EqChangeofmeasure105} and  the last equality in~\eqref{EqChangeMeasure} follow from Theorem~\ref{ThCOM}; and the equality 
+\eqref{EqAddIntegral} follows from the additivity property of the integral \cite[Corollary~1.6.4]{ash2000probability}.
 %
-The proof of the existence of such limit in \eqref{EqLimf} relies on the fact that the function $f$ in \eqref{EqHatR_lemmAppx} is strictly convex and differentiable, which implies that $f$ is also Lipschitz continuous. Hence, it follows that
+The proof ends by using Theorem~\ref{ThRNT}, which  implies the equality in~\eqref{EqJanuary18at22h41inDubai} from~\eqref{EqAddIntegral}.
+\end{IEEEproof}
 %
-\begin{IEEEeqnarray}{rCl}
-\label{EqfisLipschitz}
-	\abs{f(g(\thetav) + (\alpha+\delta) h(\thetav))-f(g(\thetav) + \alpha h(\thetav))} & \leq & c\abs{h(\thetav)}\abs{\delta},
-\end{IEEEeqnarray}
+The following folklore theorem establishes the continuity of the Radon-Nikodym derivative.
+%providing a critical result for analyzing the limits of absolutely continuous measures.
+\begin{theorem}[Continuity]
+Let~$P$ be a $\sigma$-finite measure on $\left(\Omega, \mathscr{F} \right)$, and let $Q_1, Q_2, \cdots$ be an infinite
+sequence of $\sigma$-finite measures on $\left( \Omega, \mathscr{F} \right)$, converging to a measure $Q$. Suppose that for all $n \in \mathbb{N}$, $\abscont{Q_n}{P}$.
+Then, $\abscont{Q}{P}$ and 
+\begin{equation}\label{EqTheoRNDadditivity1}
+\displaystyle\lim_{n \rightarrow \infty}  \frac{ \mathrm{d} Q_n}{\mathrm{d}P}(x) \eqasP  \frac{\mathrm{d}Q}{\mathrm{d}P}(x).
+\end{equation}
+\end{theorem}
+\begin{IEEEproof}
+From the assumptions of the theorem, for all  $\mathcal{A} \in \mathscr{F}$, it holds that
 %
-for some positive and finite constant $c$, which implies that
+\begin{eqnarray}
+\label{EqDixneufHeuresTreinte101}
+Q (\mathcal{A}) 
+& = & \lim_{n \rightarrow \infty}  Q _n (\mathcal{A}) \\
+\label{EqDixneufHeuresTreinte102}
+& =& \lim_{n \rightarrow \infty} \int_{\mathcal{A}}  \frac{ \mathrm{d} Q_n} {\mathrm{d}P}(x) \mathrm{d} P(x) \\
+\label{EqDixneufHeuresTreinte103}
+& = &  \int_{\mathcal{A}} \lim_{n \to \infty} \frac{ \mathrm{d} Q_n} {\mathrm{d}P}(x) \mathrm{d} P(x),
+\end{eqnarray}
+where 
+the equality in \eqref{EqDixneufHeuresTreinte102} follows from Theorem~\ref{ThCOM}
+; and 
+the equality in \eqref{EqDixneufHeuresTreinte103} follows from \cite[Theorem~1.6.2]{ash2000probability}.
 %
-\begin{IEEEeqnarray}{rCl}
-\label{EqDfDxLipschitz}
-	\frac{\abs{f(g(\thetav) + (\alpha+\delta) h(\thetav))-f(g(\thetav) + \alpha h(\thetav))}}{\abs{\delta}} & \leq & c\abs{h(\thetav)},
-\end{IEEEeqnarray}
+The equality in \eqref{EqDixneufHeuresTreinte103} implies that $\abscont{Q}{P}$. Hence, for all  $\mathcal{A} \in \mathscr{F}$, it holds that
+\begin{equation}
+\label{EqProofTheoRNDadditivity4}
+Q (\mathcal{A}) = \int_{\mathcal{A}} \frac{ \mathrm{d} Q}  {\mathrm{d} P}(x) \mathrm{d} P(x).
+\end{equation}
+Therefore, the equalities in \eqref{EqDixneufHeuresTreinte103} and \eqref{EqProofTheoRNDadditivity4} jointly with Theorem~\ref{ThRNT} imply equation~\eqref{EqTheoRNDadditivity1}, which completes the proof.
+\end{IEEEproof}
 %
-and thus, given that $h \in \field{S}$, it holds that
+The ensuing folklore theorem establishes the relation between the Radon-Nikodym derivative of a product measure with respect to its component measures. 
+ \begin{theorem}[Product of Measures]
+For all $i \in \lbrace 1,2 \rbrace$, let $P_{i}$ and $Q_{i}$ be a finite and a $\sigma$-finite measure on $\left( \Omega_i, \mathscr{F}_i \right)$, respectively; with $\abscont{P_i}{Q_i}$.  Let also $P_1P_2$ and 
+$Q_1 Q_2$ be the product measures on $\left( \Omega_1 \times \Omega_2, \mathscr{F}_1 \times \mathscr{F}_2 \right)$ formed by $P_1$ and $P_2$; and $Q_1$ and $Q_2$, 
+respectively. Then, 
+ \begin{eqnarray}
+  \label{EqProductMeasure0}
+\frac{\mathrm{d}P_{1} P_{2}}{\mathrm{d}Q_1Q_2}\left(x_1, x_2\right) &\eqas{Q_1Q_2}& \frac{\mathrm{d}P_{1}}{\mathrm{d}Q_1} \left(x_1\right)\frac{\mathrm{d}P_{2}}{\mathrm{d}Q_2}\left(x_2\right).
+\end{eqnarray}
+ \end{theorem}
+\begin{IEEEproof}
+From the assumptions of the theorem, for all $\set{A} \in \left(\Omega_1 \times\Omega_2 \right)$,
+\begin{eqnarray}
+ \label{EqProductMeasure1}
+P_{1} P_{2}\left(\set{A}\right) &=& \int_{\set{A}} \mathrm{d}P_{1} P_{2}\left(x_1, x_2\right) \\
+ \label{EqProductMeasure2}
+&=& \int \int_{\set{A}_{x_2}} \mathrm{d}P_{1}\left(x_1\right) \mathrm{d}P_{2}\left(x_2\right)\\
+ \label{EqProductMeasure3}
+&=& \int \int_{\set{A}_{x_2}}\dfrac{\mathrm{d}P_{1}\left(x_1\right)}{\mathrm{d}Q_1} \mathrm{d}Q_1\left(x_1\right) \mathrm{d}P_{2}\left(x_2\right) \\
+ \label{EqProductMeasure4}
+&=& \int \int_{\set{A}_{x_2}} \dfrac{\mathrm{d}P_{1}\left(x_1\right)}{\mathrm{d}Q_1} \dfrac{\mathrm{d}P_{2}\left(x_2\right)}{\mathrm{d}Q_2} \mathrm{d}Q_1\left(x_1\right) \mathrm{d}Q_2\left(x_2\right) \\
+ \label{EqProductMeasure5}
+&=& \int_{\set{A}} \dfrac{\mathrm{d}P_{1}}{\mathrm{d}Q_1}\left(x_1\right) \dfrac{\mathrm{d}P_{2}}{\mathrm{d}Q_2}\left(x_2\right) \mathrm{d}Q_1Q_2\left(x_1, x_2\right), 
+\end{eqnarray}
+where~$\set{A}_{x_2}$ is the section of the set~$\set{A}$ determined by~$x_2$, namely, $\set{A}_{x_2} \triangleq \left\lbrace x_1 \in \Omega_1: (x_1,x_2) \in \set{A} \right\rbrace$;  the equality in \eqref{EqProductMeasure1} arises from the definition of $P_1P_2$  as the product of $P_1 $ and  $P_2$; 
+the equality in \eqref{EqProductMeasure3} is a direct consequence of Theorem~\ref{ThCOM};  
+the equality in \eqref{EqProductMeasure4} follows from Theorem~\ref{ThRNT}; and finally, the equality in \eqref{EqProductMeasure5} is due to the construction of  $Q_1Q_2$ as the product measure of  $Q_1$ and $Q_2$.
+
+The proof follows by observing that from the equality in \eqref{EqProductMeasure5}, it holds that $\abscont{P_1P_2}{Q_1Q_2}$. Thus, for all~$\set{A}~\in~\mathscr{F}_1~\times~\mathscr{F}_2$, 
+\begin{eqnarray}
+P_{1} P_{2}\left(\set{A}\right) 
+%&=& \int_{\set{A}} \mathrm{d}P_{1} P_{2}\left(x_1, x_2\right) \\
+\label{EqCartProduct1}
+&=& \int_{\set{A}} \dfrac{\mathrm{d}P_{1} P_{2}}{\mathrm{d}Q_1Q_2}\left(x_1, x_2\right) \mathrm{d}Q_1Q_2\left(x_1, x_2\right).
+\end{eqnarray}
 %
-\begin{IEEEeqnarray}{rCl}
-\label{EqLimitExists}
-	\int \frac{\abs{f(g(\thetav) + (\alpha+\delta) h(\thetav))-f(g(\thetav) + \alpha h(\thetav))}}{\abs{\delta}} \diff Q(\thetav) & \leq & \infty.
-\end{IEEEeqnarray}
+The equalities in \eqref{EqProductMeasure5} and \eqref{EqCartProduct1}, together with Theorem~\ref{ThRNT}, imply the equality in~\eqref{EqProductMeasure0}, which completes the proof.
+%almost surely with respect to $Q_1Q_2$, which completes the proof.
 %
-This allows using the dominated convergence theorem as follows. From the fact that the function $f$ is differentiable, let $\dot{f}:\reals \rightarrow \reals$ be the first derivative of $f$. The limit in \eqref{EqLimf} satisfies for $\alpha \in (-\epsilon,\epsilon)$, with $\epsilon > 0$ arbitrarily small,
-%
-\begin{subequations}
-\label{EqLimHatrDCT}
-	\begin{IEEEeqnarray}{rCl}
-	\lim_{\delta \rightarrow 0} \frac{1}{\delta}(\hat{r}(\alpha+\delta) -\hat{r}(\alpha)) 
-	& = & \lim_{\delta \rightarrow 0} \frac{1}{\delta}(\int f(g(\thetav) + (\alpha+\delta) h(\thetav)) \diff Q(\thetav)-\int f(g(\thetav) + \alpha h(\thetav)) \diff Q(\thetav))
-	\label{EqLimHatrDCT_s1}\\
-	& = & \lim_{\delta \rightarrow 0} \int \frac{1}{\delta}(f(g(\thetav) + (\alpha+\delta) h(\thetav)) - f(g(\thetav) + \alpha h(\thetav))) \diff Q(\thetav)
-	\label{EqLimHatrDCT_s2}\\
-	& = & \int \lim_{\delta \rightarrow 0} \frac{1}{\delta}(f(g(\thetav) + (\alpha+\delta) h(\thetav)) - f(g(\thetav) + \alpha h(\thetav))) \diff Q(\thetav)
-	\label{EqLimHatrDCT_s3}\\
-	& = & \int \dot{f}(g(\thetav) + (\alpha+\delta) h(\thetav))  \diff Q(\thetav)
-	\label{EqLimHatrDCT_s4}\\
-	& < &  \infty,
-	\label{EqLimHatrDCT_s5}
-	\end{IEEEeqnarray}
-\end{subequations}
-%
-where the equalities in \eqref{EqLimHatrDCT_s3} and \eqref{EqLimHatrDCT_s5} follow from the dominated convergence theorem \cite[Theorem 1.6.9]{ash2000probability}. From \eqref{EqLimHatrDCT_s5}, it follows that the function $\hat{r}$ in \eqref{EqHatR_lemmAppx} is differentiable at zero. This completes the proof.
+%From Theorem~\ref{ThRNT}, it follows that the equalities in \eqref{EqProductMeasure5} and \eqref{EqCartProduct1} hold almost surely with respect to $Q_1Q_2$, thereby completing the proof.
 \end{IEEEproof}
 
+\section{Advanced folklore theorems}
+This section requires some additional notation. In particular, denote by $\triangle\left(\mathcal{X},\mathscr{F}_\mathcal{X}\right)$, or simply~$\triangle\left(\mathcal{X}\right)$, the set of all probability measures on the measurable space $\left(\mathcal{X},\mathscr{F}_{\set{X}}\right)$, where $\mathscr{F}_{\set{X}}$ is a $\sigma$-algebra on $\set{X}$.
+%
+Using this notation, conditional probability measures can be defined as follows. 
+\begin{definition}[Conditional Probability]
+A family $P_{Y|X}~\triangleq~(P_{Y|X=x})_{x\in\set{X}}$ of elements of $\triangle( \set{Y}, \mathscr{F}_{\set{Y}})$ indexed by $\set{X}$ is said to be a conditional probability measure if, for all sets $\mathcal{A} \in \mathscr{F}_{\set{Y}}$, the map
+\begin{eqnarray}
+\set{X}& \to & [0, 1] \\
+x & \mapsto & P_{Y|X=x}(\mathcal{A})
+\end{eqnarray}
+is Borel measurable. The set of such conditional probability measures is denoted by $\triangle(\set{Y}|\set{X})$.
+\end{definition}
 
-%\IEEEtriggeratref{24}
-\bibliographystyle{IEEEtranlink}%IEEEtran
-%\bibliographystyle{../../WeeklyReport/Bibliography/MyIEEEtran}
-\bibliography{iEEEtranBibStyle.bib}
+A conditional probability $P_{Y|X} \in \triangle(\mathcal{Y} | \mathcal{X})$ and a probability measure $P_X \in \triangle(\mathcal{X})$ determine two unique probability measures in $\triangle(\mathcal{X} \times \mathcal{Y})$ and $\triangle(\mathcal{Y} \times \mathcal{X})$, respectively. These probability measures are denoted by $P_{XY}$ and $P_{YX}$, respectively, and for all sets $\mathcal{A} \in \mathscr{F}_{\set{X}} \times \mathscr{F}_{\set{Y}}$, it follows that
+%
+\begin{eqnarray}
+\label{EqMay20at14h23in2024}
+P_{X Y }\left( \set{A} \right) & = & \int P_{Y |X =x} \left( \set{A}_{x}\right) \mathrm{d} P_{X} \left(x\right),
+\end{eqnarray}
+where~$\set{A}_{x}$ is the section of the set~$\set{A}$ determined by~$x$, namely, 
+\begin{eqnarray}
+\label{EqNovember15at16h57in2024InTheBusToNice}
+\set{A}_{x} \triangleq \left\lbrace y \in \set{Y}: (x,y) \in \set{A} \right\rbrace.
+\end{eqnarray}
+%
+Alternatively,  for all sets~$\set{B} \in \mathscr{F}_{\set{Y}} \times \mathscr{F}_{\set{X}}$, it follows that
+\begin{eqnarray}
+\label{EqOctober30at7h48in2024SophiaAntipolis}
+P_{ YX } \left( \set{B} \right) & = & \int P_{Y |X =x} \left( \set{B}_{x}\right) \mathrm{d} P_{X} \left(x\right),
+\end{eqnarray}
+where~$\set{B}_{x}$ is the section of the set~$\set{B}$ determined by~$x$. 
+%
+For all sets~$\set{A} \in  \mathscr{F}_{\set{X}} \times \mathscr{F}_{\set{Y}}$, let the set~$\hat{\set{A}} \in  \mathscr{F}_{\set{Y}} \times \mathscr{F}_{\set{X}}$ be such that 
+\begin{eqnarray}
+\label{EqNovember16at18h49in2024Nice}
+\hat{\set{A}}  & = & \left\lbrace (y, x) \in\set{Y} \times \set{X}:  (x , y) \in \set{A} \right\rbrace.
+\end{eqnarray}
+Then, from~\eqref{EqMay20at14h23in2024} and~\eqref{EqOctober30at7h48in2024SophiaAntipolis}, it holds that
+\begin{eqnarray}\label{EqJanuary10at16h43in2025}
+P_{XY }\left( \set{A} \right) & = & P_{YX}\left( \hat{\set{A}} \right).
+\end{eqnarray}
+%
+Using this notation, the notion of marginal probability measures can be introduced as follows. 
+%capturing the individual behavior of a random variable by "marginalizing out" the other variables.
+\begin{definition}[Marginals]
+Given two joint probability measures $P_{XY} \in \triangle\left( \set{X} \times \set{Y} \right)$ and $P_{YX} \in \triangle\left( \set{Y} 
+\times \set{X} \right)$, satisfying \eqref{EqJanuary10at16h43in2025}, the marginal probability measures in $\triangle\left( \set{X} 
+\right)$ and $\triangle\left( \set{Y} \right)$, denoted by $P_X$ and $P_Y$, respectively satisfy for all  sets $\set{A} \in  \mathscr{F}_{\set{X}}$ and for all sets $\set{B} \in \mathscr{F}_{\set{Y}}$,
+\begin{eqnarray}
+\label{eqmargpx}
+P_{X}\left( \set{A} \right) & \triangleq  P_{XY}\left( \set{A} \times \set{Y} \right) = & P_{YX}\left( \set{Y} \times \set{A} 
+\right) ; \mbox{ and } \\
+\label{eqmargpy}
+P_{Y}\left( \set{B} \right) & \triangleq  P_{XY}\left( \set{X} \times \set{B} \right) = & P_{YX}\left( \set{B} \times \set{X} 
+\right).
+\end{eqnarray}
+\end{definition}
+From the total probability theorem \cite[Theorem~4.5.2]{ash2000probability}, it follows that for all~$\set{A} \in \mathscr{F}
+_{\set{Y}}$,  
+\begin{eqnarray}\label{eqmarginal1}
+%\nonumber
+ P_Y(\set{A})  = \int \int_{\set{A}} \mathrm{d}P_{Y | X = x}(y) \mathrm{d}P_X (x);
+\end{eqnarray}
+%$P_Y(A)$ is the marginal of $P_{Y|X} P_X$. For all~$\set{B} \in \mathscr{F}_{\set{X}}$, the marginal of $P_{X|Y} P_Y$ is 
+and for all~$\set{B} \in \mathscr{F}_{\set{X}}$, 
+\begin{eqnarray}\label{eqmarginal2}
+P_X(\set{B}) =    \int \int_{\set{B}} \mathrm{d}P_{X | Y = y}(x) \mathrm{d}P_Y(y).
+\end{eqnarray}
+%
+The joint probability measures~$P_{XY}$ and~$P_{YX}$ can be described via the conditional probability measure~$P_{Y | X}$ 
+and the probability measure~$P_{X}$ as in~\eqref{EqMay20at14h23in2024} and 
+in~\eqref{EqOctober30at7h48in2024SophiaAntipolis}; or via the conditional probability measure~$P_{X | Y} \in \triangle\left( \set{X} | \set{Y} \right)$ and the marginal probability 
+measure~$P_{Y} \in \triangle\left( \set{Y} \right)$.
+%
+More specifically, for all sets~$\set{A} \in  \mathscr{F}_{\set{X}} \times \mathscr{F}_{\set{Y}}$, it follows that
+\begin{eqnarray}
+\label{EqJun3at14h31in2024}
+P_{XY }\left( \set{A} \right) & = & \int P_{X | Y = y} \left( \set{A}_{y}\right) \mathrm{d} P_{Y} \left( y\right),
+\end{eqnarray}
+where~$\set{A}_{y}$ is the section of the set~$\set{A}$ determined by~$y$, namely, 
+\begin{eqnarray}
+\label{EqNovember15at16h39in2024InTheBusToNice}
+\set{A}_{y} \triangleq \left\lbrace x \in \set{X} : (x,y) \in \set{A} \right\rbrace.
+\end{eqnarray}
+%A similar approach can be used for $P_{YX}$.
+Alternatively, for all sets~$\set{B} \in \mathscr{F}_{\set{Y}} \times \mathscr{F}_{\set{X}}$, it follows that
+\begin{eqnarray}
+\label{EqNovember10at20h22in2024Nice}
+P_{ YX } \left( \set{B} \right) & = & \int P_{X | Y = y} \left( \set{B}_{y}\right) \mathrm{d} P_{Y} \left( y\right),
+\end{eqnarray}
+where~$\set{B}_{y}$ is the section set of~$\set{B}$ determined by $y$.
+
+Within this context, the following folklore theorem highlights a property of conditional measures, which is reminiscent of the unit measure axiom in probability theory. 
+\begin{theorem}[Unit Measure]\label{ThUnitMeasure}
+%CHANGe name 
+Consider the conditional probability measures~$P_{Y | X} \in \triangle\left( \set{Y} | \set{X} \right)$ and~$P_{X | Y}\in \triangle\left( \set{X} | \set{Y} \right)$; the probability measures~$P_{Y} \in \triangle\left( \set{Y} \right)$ 
+and~$P_{X} \in \triangle\left(  \set{X} \right)$ that satisfy~\eqref{eqmarginal1} and~\eqref{eqmarginal2}. Assume that for all~$x \in \set{X}$, the probability measure~$\abscont{P_{Y | X = x}}{P_{Y}}$. Then,
+\begin{eqnarray}
+\label{EqThCondPorp}
+\int  \frac{\mathrm{d} P_{Y|X = x}}{\mathrm{d}P_{Y}} (y) \mathrm{d}P_{X}(x) &\eqas{P_Y}& 1.
+ \end{eqnarray}
+ \end{theorem}
+% 
+\begin{IEEEproof}
+For all $\set{A} \in \mathscr{F}_{\set{Y}}$, from \eqref{eqmarginal1}, it holds that
+\begin{eqnarray}
+\label{EqDefOfMarg}
+ P_{Y}(\set{A}) & =& \int \int_{\set{A}} \mathrm{d}P_{Y | X = x}(y) \mathrm{d}P_X (x)\\
+ \label{EqIDK}
+  & = & \int \int_{\set{A}} \frac{\mathrm{d} P_{Y|X = x}}{\mathrm{d}P_{Y}}(y) \mathrm{d}P_{Y}(y) \mathrm{d}P_X (x)\\
+  \label{EqResult}
+  & =& \int_{\set{A}} \int  \frac{\mathrm{d} P_{Y|X = x}}{\mathrm{d}P_{Y}}(y) \mathrm{d}P_X (x) \mathrm{d}P_{Y}(y),
+ \end{eqnarray}
+ %
+where the equality in  \eqref{EqIDK} follows from a change of measure (Theorem~\ref{ThCOM}). Moreover, \eqref{EqResult} is 
+obtained using Fubini's theorem \cite[Theorem~2.6.6]{ash2000probability}.
+The proof proceeds by noticing that $P_{Y}(\set{A})  =\int _{\set{A}} \mathrm{d}P_{Y}(y)$, and thus from Theorem~\ref{ThRNT} and the equality in \eqref{EqResult}, the statement in \eqref{EqThCondPorp} holds.
+\end{IEEEproof}
+
+ The following folklore theorem is reminiscent of the Bayes rule.
+
+\begin{theorem}[Bayes-like rule]\label{TheoBYR}
+Consider the conditional probability measures~$P_{Y | X}$ and~$P_{X | Y}$; the probability measures~$P_{Y}$ 
+and~$P_{X}$ that satisfy~\eqref{eqmarginal1} and~\eqref{eqmarginal2}; and the joint probability measures~$P_{YX}$ and~$P_{XY}$ in \eqref{EqOctober30at7h48in2024SophiaAntipolis} and \eqref{EqJun3at14h31in2024} respectively. 
+%
+Let also $P_{X}P_{Y} \in \triangle\left( \set{X} \times \set{Y} , \mathscr{F}_{\set{X}} \times \mathscr{F}_{\set{Y}}\right)$ and $P_{Y}P_{X} \in \triangle\left( \set{Y} \times \set{X} , \mathscr{F}_{\set{Y}} \times \mathscr{F}_{\set{X}}\right)$ be the measures formed by the product of the marginals $P_{X}$ and $P_{Y}$. 
+%
+ Assume that:
+\begin{itemize}
+\item[$\left(a\right)$] For all~$x \in \set{X}$,~$\abscont{P_{Y | X = x}}{P_{Y}}$; 
+and 
+\item[$\left(b\right)$] For all~$y \in \set{Y}$,~$\abscont{P_{X | Y = y}}{P_{X}}$.
+\end{itemize}
+Then,
+% for all~$\left( x , y \right) \in \left( \set{X} \times \set{Y}\right)$,  
+\begin{eqnarray}
+\label{EqOuter1Inner1}
+\frac{\mathrm{d} P_{XY}}{\mathrm{d} P_{X}P_{Y}} \left( x,y \right) &\eqas{P_XP_Y}& \frac{\mathrm{d} P_{X | Y = y}}{\mathrm{d} P_{X}} \left( x \right)\\
+ \label{EqInner1Inner2}
+ & \eqas{P_XP_Y} & \frac{\mathrm{d} P_{Y | X = x}}{\mathrm{d} P_{Y}}\left( y \right)\\
+ \label{EqInner2Outer2}
+ & \eqas{P_XP_Y} & \frac{\mathrm{d} P_{YX}}{\mathrm{d} P_{Y}P_{X}}\left( y,x\right).
+\end{eqnarray}
+\end{theorem}
+%
+\begin{IEEEproof}
+%The proof begins by considering the joint probability measure $P_{XY}$ 
+Note that assumptions $\left(a\right)$ 
+and $\left(b\right)$ are sufficient for the Radon-Nikodym derivatives of $P_{XY}$ with respect to $P_XP_Y$
+and~$P_{YX}$ with respect to $P_YP_X$ to exist. Hence, it follows that for all sets~$\set{A}~\in~ \mathscr{F}_{\set{X}} \times \mathscr{F}_{\set{Y}}$,
+\begin{eqnarray}
+\label{EqJanuary19at21h57inDubai}
+P_{XY }\left( \set{A} \right) & = & \int_{\set{A}} \frac{\mathrm{d}P_{XY}} {\mathrm{d}P_{X}P_{Y}} (x,y) \mathrm{d}P_{X}P_{Y} (x,y),   
+\end{eqnarray}
+which follows from Theorem~\ref{ThCOM}.
+Note also that from~\eqref{EqJun3at14h31in2024}, it follows that
+%The proof proceeds by noticing that from~\eqref{EqJun3at14h31in2024}, it holds that
+\begin{eqnarray}
+\label{EqOctober31at13h12in2024Nicea}
+P_{X Y }\left( \set{A} \right) & = & \int \int_{ \set{A}_{y} } \mathrm{d} P_{X | Y = y} \left( x \right) \mathrm{d} P_{Y} \left( y\right)\\
+\label{EqOctober31at13h12in2024Niceb}
+&=& \int \int_{ \set{A}_{y} } \frac{\mathrm{d} P_{X | Y = y} }{\mathrm{d}P_{X}} \left( x \right) \mathrm{d}P_{X}\left( x \right) 
+\mathrm{d} P_{Y} \left( y\right)  \\
+\label{EqNovember15at16h25in2024InTheBusToNiceA}
+& = & \int \int \mathds{1}_{\set{A}_y}(x) \frac{\mathrm{d} P_{X | Y = y} }{\mathrm{d}P_{X}} \left( x \right)  \mathrm{d}P_{X}\left( x \right) 
+\mathrm{d} P_{Y} \left( y\right)  \\
+\label{EqNovember15at16h25in2024InTheBusToNiceB}
+& = & \int \mathds{1}_{\set{A}}(x,y) \frac{\mathrm{d} P_{X | Y = y} }{\mathrm{d}P_{X}} \left( x \right)  \mathrm{d} P_{X} P_{Y} \left(x, 
+y\right)  \\
+\label{EqOctober31at13h12in2024Nicec}
+& = & \int_{\set{A}} \frac{\mathrm{d} P_{X | Y = y} }{\mathrm{d}P_{X}} \left( x \right) \mathrm{d} P_{X} P_{Y} \left(x,  y\right), 
+\end{eqnarray}
+%
+where, the set~$\set{A}_{y}$ is defined in~\eqref{EqNovember15at16h39in2024InTheBusToNice}.  Moreover, the equality 
+in~\eqref{EqOctober31at13h12in2024Niceb} follows from Assumption~$\left(b\right)$ and Theorem \ref{ThRNT}. 
+%
+Similarly, from~\eqref{EqMay20at14h23in2024}, it follows that 
+%
+\begin{eqnarray}
+\label{EqNovember15at16h36in2024InTheBusToNiceA}
+P_{X Y }\left( \set{A} \right)  & = & \int \int_{ \set{A}_{x} } \mathrm{d} P_{Y | X = x} \left( y \right) \mathrm{d} 
+P_{X} \left( x\right)\\
+\label{EqNovember15at16h36in2024InTheBusToNiceB}
+& = & \int \int_{ \set{A}_{x} } \frac{\mathrm{d} P_{Y | X = x} }{\mathrm{d}P_{Y}} \left( y \right)\mathrm{d} P_{Y} \left( y\right) \mathrm{d}P_{X}\left( x \right)   \\
+\label{EqNovember15at16h36in2024InTheBusToNiceC}
+& = & \int \int \mathds{1}_{\set{A}_x}(y) \frac{\mathrm{d} P_{Y | X = x} }{\mathrm{d}P_{Y}} \left( y \right) \mathrm{d} P_{Y} \left( y\right) 
+\mathrm{d}P_{X}\left( x \right)   \\
+\label{EqNovember15at16h36in2024InTheBusToNiceC1}
+& = & \int \int \mathds{1}_{\set{A}_y}(x) \frac{\mathrm{d} P_{Y | X = x} }{\mathrm{d}P_{Y}} \left( y \right)  \mathrm{d}P_{X}\left( x \right) 
+\mathrm{d} P_{Y} \left( y\right)    \\
+\label{EqNovember15at16h36in2024InTheBusToNiceD}
+& = & \int \mathds{1}_{\set{A}}(x,y) \frac{\mathrm{d} P_{Y | X = x} }{\mathrm{d}P_{Y}} \left( y \right) \mathrm{d} P_{X}P_{Y}  \left(  x , 
+y\right)   \\\label{EqNovember15at16h36in2024InTheBusToNiceE}
+& = & \int_{\set{A}} \frac{\mathrm{d} P_{Y | X = x} }{\mathrm{d}P_{Y}} \left( y \right)  \mathrm{d} P_{X}P_{Y}  \left(  x , y\right),  
+\end{eqnarray}
+where, the set~$\set{A}_{x}$ is defined in~\eqref{EqNovember15at16h57in2024InTheBusToNice}.  Moreover, the equality 
+in~\eqref{EqNovember15at16h36in2024InTheBusToNiceB} follows from Assumption~$\left(a\right)$ and Theorem \ref{ThRNT}; and
+the equality in~\eqref{EqNovember15at16h36in2024InTheBusToNiceC1} follows by exchanging the order of integration \cite[Theorem~2.6.6]{ash2000probability}.
+Finally, from~\eqref{EqJanuary10at16h43in2025}, it follows that
+\begin{eqnarray}
+\nonumber
+P_{XY}\left( \set{A} \right) 
+&=& \int_ {\hat{\set{A}} } \mathrm{d} P_{YX}\left(y,x\right)\\
+\label{EqAntibesTT1}
+&=& \int_{\hat{\set{A}}}\frac{ \mathrm{d}P_{YX}} { \mathrm{d} P_YP_X}\left(y,x\right) \mathrm{d}P_YP_X\left(y,x\right)\\ 
+&=& \int \mathds{1}_{\hat{\set{A}}}(y,x) \frac{ \mathrm{d}P_{YX}} { \mathrm{d} P_YP_X}\left(y,x\right) \mathrm{d}P_YP_X\left(y,x\right)  \\
+\label{EqAntibesTT2}
+&=&  \int \int \mathds{1}_{\hat{\set{A}}_x}(y)\frac{ \mathrm{d}P_{YX}} { \mathrm{d} P_YP_X}\left(y,x\right) \mathrm{d}P_Y(y) \mathrm{d}P_X(x) \\
+\label{EqAntibesTT3}
+&=& \int \int \mathds{1}_{\hat{\set{A}}_y}(x)\frac{ \mathrm{d}P_{YX}} { \mathrm{d} P_YP_X}\left(y,x\right) \mathrm{d}P_X(x) \mathrm{d}P_Y(y)  \\
+&=& \int \mathds{1}_{\hat{\set{A}}}(x,y)\frac{ \mathrm{d}P_{YX}} { \mathrm{d} P_YP_X}\left(y,x\right) \mathrm{d}P_XP_Y(x,y)\\ 
+\label{EqAntibesin2025Jan}
+&=& \int_{\set{A}} \frac{ \mathrm{d}P_{YX}} { \mathrm{d} P_YP_X}\left(y,x\right) \mathrm{d}P_XP_Y(x,y), 
+\end{eqnarray}
+where the set $\hat{\set{A}}$ is defined in \eqref{EqNovember16at18h49in2024Nice}. By performing a change of measure using Theorem \ref{ThCOM} and assumption $\left(a\right)$, the equality in \eqref{EqAntibesTT1} is obtained; and the equality in \eqref{EqAntibesTT3} follows by exchanging the order of integration \cite[Theorem~2.6.6]{ash2000probability}. 
+
+The proof is completed from Theorem~\ref{ThRNT} and by combining equations~\eqref{EqJanuary19at21h57inDubai}, ~\eqref{EqOctober31at13h12in2024Nicec}, ~\eqref{EqNovember15at16h36in2024InTheBusToNiceE} and~\eqref{EqAntibesin2025Jan}, which establish \eqref{EqOuter1Inner1}, \eqref{EqInner1Inner2} and~\eqref{EqInner2Outer2}.
+\end{IEEEproof}
+
+\begin{example}
+%This exemples shows that in (a) the asumption on all x is necessary. Indeed, lets prove that there exist some x in omega such that PY given X is 0 and Py is not 0 in this case the absolute continuity assumption is not true therefore the random Nikiodym derivation of PY|x py does not exists. 
+
+From definition \ref{DefAbsCountinuity}, we want to show that there exist an $x \in \set{X}$ such that $P_{Y|X=x}(A) > 0$ and $P_X(\{x \in \set{X} : P_{Y|X=x} (A) > 0\} )= 0$
+
+For all $x \in \mathbb{R}$, for $\set{A} \in \mathscr{F}_Y$, for $\set{B} \in \mathscr{F}_Y$ and $\mu$ the Lebesgue measure, $P_{Y|X=x}(A)$ and
+$P_X (B)$ are defined as follows 
+\begin{IEEEeqnarray}{rCl}
+P_{Y|X=x}(A) &=& \mu(A \cap (-x, x))\\
+P_X (B) &=& \mu(B)
+\end{IEEEeqnarray}
+%and 
+%\begin{IEEEeqnarray}{rCl}
+%P_X (B) &=& \mu(B)
+%\end{IEEEeqnarray}
+
+Given $A \in \set{B}(\mathbb{R})$ such that $P_Y(A) = 0$, then 
+\begin{IEEEeqnarray}{rCl}
+P_Y(A) &= &\int P_{Y|X=x}(A) \mathrm{d}P_X(x)\\
+\label{EqMadrid9am59}
+& = & \int \mu \left(A \cap \left(-x, x\right)\right)  \ind{x \in  \mathbb{N}} \mathrm{d}P_X(x)\\ 
+\label{EqMadrid10am00}
+&=& \int_\mathbb{N} \mu \left(A \cap \left(-x, x\right)\right) \mathrm{d}P_X(x)\\
+\label{EqMadrid10am01}
+& = & \sum_{t=0}^\infty \mu \left(A \cap \left(-t, t\right)\right) \mu(\{t\})\\
+\label{EqMadrid10am02}
+& = & 0 \label{EqMadrid10am03}
+\end{IEEEeqnarray}
+The equality in \eqref{EqMadrid9am59} follows from \eqref{eqmarginal1}; the equality \eqref{EqMadrid10am03} follows from the definition of the Lebesgue measure of a singleton. Thus, this exemple constructs $P_{Y|X}$ and $P_X$ such that for some $\set{A} \in \set{B}(\mathbb{R})$ $P_Y(A) = 0$ but $P_{Y|X=x}(A) > 0$  for some $x \in \set{X}$ , therefore the Radom-Nikodym derivative of $P_Y|X=x$ with respect to $P_Y$ does not exist. This proves that assumption (a) in \ref{TheoBYR} cannot be weakened and is needed for all $x \in \set{X}$. A example for assumption (b) in \ref{TheoBYR} can be constructed similarly. 
+\end{example}
+
+
+\begin{theorem}[Inverse Bayes-like Rule]\label{TheoBYR2}
+Consider the conditional probability measures~$P_{Y | X}$ and~$P_{X | Y}$;  and the probability measures~$P_{Y}$ 
+and~$P_{X}$ that satisfy~\eqref{eqmarginal1} and~\eqref{eqmarginal2}; and the joint probability measures~$P_{YX}$ and~$P_{XY}$ in~\eqref{EqOctober30at7h48in2024SophiaAntipolis} and~\eqref{EqJun3at14h31in2024}  respectively.
+ Assume that:
+\begin{itemize}
+\item[$\left(a\right)$] For all~$x \in \set{X}$,~$\abscont{P_{Y}}{P_{Y | X = x}}$; 
+and 
+\item[$\left(b\right)$] For all~$y \in \set{Y}$,~$\abscont{P_{X}}{P_{X | Y = y}}$. 
+\end{itemize} 
+Then, 
+\begin{eqnarray}
+ \label{EqInverseOuter1Inner1}
+\frac{\mathrm{d} P_{X}P_{Y}}{\mathrm{d} P_{XY}} \left( x,y \right)& \eqas{P_{XY}}& \frac{\mathrm{d} P_{X}}{\mathrm{d} P_{X | Y = y}} \left( x \right)\\
+ \label{EqInverseInner1Inner2}
+ & \eqas{P_{XY}} & \frac{\mathrm{d} P_{Y}}{\mathrm{d} P_{Y | X = x}}\left( y \right)\\
+  \label{EqInverseInner2Outer2}
+ & \eqas{P_{YX}}&  \frac{\mathrm{d} P_{Y}P_{X}}{\mathrm{d} P_{YX}}\left( y,x\right).
+\end{eqnarray}
+\end{theorem}
+\begin{IEEEproof}
+The proof follows along the same lines as the proof of Theorem~\ref{TheoBYR}.
+The proof follows by observing that for all measurable sets~$\set{A} \in \set{X} \times \set{Y}$,  the product measure~$P_{X}P_{Y} \in \triangle\left( \set{X} \times \set{Y} \right)$ satisfies
+\begin{eqnarray}
+\nonumber
+& & P_{X}P_{Y}  \left(\set{A} \right)  \\
+\label{EqNovember16at18h29in2024NiceA}
+& = &\int_{\set{A}} \mathrm{d}P_{X}P_{Y}  \left( x, y\right) \\
+\label{EqNovember16at18h29in2024NiceB}
+& = &\int \int_{\set{A}_{y}} \mathrm{d}P_{X}\left( x\right)  \mathrm{d}P_{Y}  \left(y\right) \\
+\label{EqNovember16at18h29in2024NiceC}
+& = &\int \int_{\set{A}_{y}}  \frac{\mathrm{d}P_{X}}{\mathrm{d}P_{X | Y = y}} \left( x \right) \mathrm{d}P_{X | Y = y} \left( x \right)  \mathrm{d}P_{Y}  \left(y\right) \spnum \\
+\label{EqNovember16at18h29in2024NiceD}
+& = &\int \int \frac{\mathrm{d}P_{X}}{\mathrm{d}P_{X | Y = y}} \left( x \right) \ind{x \in \set{A}_{y}}  \mathrm{d}P_{X | Y = y} \left( x \right)  \mathrm{d}P_{Y}  \left(y\right) \spnum \\
+\label{EqNovember16at18h29in2024NiceE}
+& = &\int \frac{\mathrm{d}P_{X}}{\mathrm{d}P_{X | Y = y}} \left( x \right) \ind{x \in \set{A}_{y}}  \mathrm{d}P_{XY} \left( x, y\right) \spnum \\
+\label{EqNovember16at18h29in2024NiceF}
+& = &\int_{\set{A}} \frac{\mathrm{d}P_{X}}{\mathrm{d}P_{X | Y = y}} \left( x \right)    \mathrm{d}P_{XY} \left( x, y\right), \spnum 
+\end{eqnarray}
+where the set~$\set{A}_{y}$ is defined in~\eqref{EqNovember15at16h39in2024InTheBusToNice}; the equality in~\eqref{EqNovember16at18h29in2024NiceC} follows from Assumption~$(b)$ and \cite[Theorem~$2.2.3$]{lehmann2005testing}; and the measure~$P_{XY}$ is defined in~\eqref{EqJun3at14h31in2024}.
+
+The proof proceeds by noticing that for all measurable sets~$\set{A} \in \set{X} \times \set{Y}$,  the product measure~$P_{X}P_{Y} \in \triangle\left( \set{X} \times \set{Y} \right)$ also satisfies
+\begin{eqnarray}
+\nonumber
+& & P_{X}P_{Y}  \left(\set{A} \right)  \\
+\label{EqNovember16at18h36in2024NiceA}
+& = &\int_{\set{A}} \mathrm{d}P_{X}P_{Y}  \left( x, y\right) \\
+\label{EqNovember16at18h36in2024NiceB}
+& = &\int \int_{\set{A}_{y}} \mathrm{d}P_{X}\left( x\right)  \mathrm{d}P_{Y}  \left(y\right) \\
+\label{EqNovember16at18h36in2024NiceC}
+& = &\int \int_{\set{A}_{x}}  \mathrm{d}P_{Y}  \left(y\right) \mathrm{d}P_{X}\left( x\right)  \\
+\label{EqNovember16at18h36in2024NiceC1}
+& = &\int \int_{\set{A}_{x}}  \frac{\mathrm{d}P_{Y}}{\mathrm{d}P_{Y | X = x}} \left( y \right) \mathrm{d}P_{Y | X = x} \left( y \right)  \mathrm{d}P_{X}  \left(x\right) \spnum \\
+\label{EqNovember16at18h36in2024NiceD}
+& = &\int \int  \frac{\mathrm{d}P_{Y}}{\mathrm{d}P_{Y | X = x}} \left( y \right) \ind{y \in \set{A}_{x}} \mathrm{d}P_{Y | X = x} \left( y \right)  \mathrm{d}P_{X}  \left(x\right) \spnum \\
+\label{EqNovember16at18h36in2024NiceE}
+& = &\int   \frac{\mathrm{d}P_{Y}}{\mathrm{d}P_{Y | X = x}} \left( y \right) \ind{y \in \set{A}_{x}} \mathrm{d}P_{YX}  \left(y, x\right) \spnum \\
+\label{EqNovember16at18h36in2024NiceF}
+& = &\int_{\hat{\set{A}}}   \frac{\mathrm{d}P_{Y}}{\mathrm{d}P_{Y | X = x}} \left( y \right) \mathrm{d}P_{YX}  \left(y, x\right) \spnum \\
+\label{EqNovember16at18h36in2024NiceG}
+& = &\int_{\set{A}}   \frac{\mathrm{d}P_{Y}}{\mathrm{d}P_{Y | X = x}} \left( y \right) \mathrm{d}P_{XY}  \left(x,y\right), \spnum 
+\end{eqnarray}
+where the sets~$\set{A}_{x}$,~$\set{A}_{y}$, and~$\hat{\set{A}}$ are defined in~\eqref{EqNovember15at16h57in2024InTheBusToNice},~\eqref{EqNovember15at16h39in2024InTheBusToNice}, and~\eqref{EqNovember16at18h49in2024Nice}; and the measure~$P_{YX}$ is defined in~\eqref{EqOctober30at7h48in2024SophiaAntipolis}.
+%
+The equality in~\eqref{EqNovember16at18h36in2024NiceC} follows by exchanging the order of the integrals \cite[Theorem~$2.6.6$]{ash2000probability}; 
+the equality in~\eqref{EqNovember16at18h36in2024NiceC1} follows from Assumption~$(a)$ and \cite[Theorem~$2.2.3$]{lehmann2005testing}.
+
+The proof is completed by noticing that from~\eqref{EqNovember16at18h29in2024NiceF} and~\eqref{EqNovember16at18h36in2024NiceG}, the following equalities hold:
+%
+\begin{eqnarray}
+P_{X, Y }\left( \set{A} \right) \middlesqueezeequ & = &\int_{\set{A}} \frac{\mathrm{d}P_{X}}{\mathrm{d}P_{X | Y = y}} \left( x \right)    \mathrm{d}P_{XY} \left( x, y\right),  \\ 
+& = & \int_{\set{A}}   \frac{\mathrm{d}P_{Y}}{\mathrm{d}P_{Y | X = x}} \left( y \right) \mathrm{d}P_{XY}  \left(x,y\right),
+\end{eqnarray}
+which together with \cite[Theorem~$2.2.3$]{lehmann2005testing} implies the equality in~\eqref{EqMay20at16h50in2024} almost surely with respect to the measure~$P_{XY} \in \triangle\left(\set{X} \times \set{Y} \right)$ in~\eqref{EqMay20at14h23in2024}. This completes the proof.
+
+\end{IEEEproof}
+
+\begin{remark}
+An alternative proof for Theorem \ref {ThUnitMeasure} can be written as follows, by combining Theorems~\ref{TheoBYR}~\ref{TheoBYR2} and \ref{TheoInverseRND}.
+\begin{eqnarray}
+&& \int  \frac{\mathrm{d} P_{Y|X = x}}{\mathrm{d}P_{Y}} (y) \mathrm{d}P_{X}(x)\\
+ &=& \int  \frac{\mathrm{d} P_{Y|X = x}}{\mathrm{d}P_{Y}} (y)\frac{\mathrm{d} P_{X}}{\mathrm{d}P_{X | Y= y}} (x) \mathrm{d}P_{X|Y = y}(x)\\\squeezeequ\spnum
+ &=&  \int  \mathrm{d}P_{X|Y = y}(x) = 1
+ \end{eqnarray}
+
+\end{remark}
+
+\begin{example}
+%This exemples shows that in (a) the asumption on all x is necessary. Indeed, lets prove that there exist some x in omega such that PY given X is 0 and Py is not 0 in this case the absolute continuity assumption is not true therefore the random Nikiodym derivation of PY|x py does not exists. 
+
+%From definition \ref{DefAbsCountinuity}, 
+This example shows that there exist a $z \in \set{X}$ such that $P_{Y|X=z}(A) = 0$ and $P_Y(A) > 0$.
+
+For all $x \in \mathbb{R}$, for $\set{A} \in \mathscr{F}_Y$, for $\set{B} \in \mathscr{F}_Y$ and $\mu$ the Lebesgue measure, $P_{Y|X=x}(A)$ and
+$P_X (B)$ are defined as follows 
+\begin{IEEEeqnarray}{rCl}
+P_{Y|X=x}(A) &=& \ind{A \cap \{(x,y) \in \mathbb{R}^2: x=y \} \neq \emptyset}\\
+P_X (B) &=& \mu(B)
+\end{IEEEeqnarray}
+%and 
+%\begin{IEEEeqnarray}{rCl}
+%P_X (B) &=& \mu(B)
+%\end{IEEEeqnarray}
+
+Given $A \in \set{B}(\mathbb{R})$ such that $P_Y(A) = 0$, then 
+\begin{IEEEeqnarray}{rCl}
+P_Y(A) &= &\int P_{Y|X=x}(A) \mathrm{d}P_X(x)\\
+\label{EqLaCadiere9am59}
+& = & \int \ind{A \cup \{(x,y) \in \mathbb{R}^2: x=y  \} \neq \emptyset} \mathrm{d}P_X(x)\\ 
+\label{EqLaCadiere10am00}
+& = & \int \ind{A \cup \{(x,x)  \} \neq \emptyset} \mathrm{d}P_X(x)\\ 
+\label{EqLaCadiere10am01}
+& = & \int \ind{x \in A} \mathrm{d}P_X(x)\\
+\label{EqLaCadiere10am02}
+& = &  \int_A \mathrm{d}P_X(x) \\
+\label{EqLaCadiere10am03}
+&=& \mu(A)
+\end{IEEEeqnarray}
+
+Let us define the infimum as follows, 
+\begin{IEEEeqnarray}{rCl}
+\label{Eqdefinf}
+\underline{x} & = & inf_y \{x \in \mathbb{R}: (x,y) \in A\}
+\end{IEEEeqnarray}
+Then for all $z \in \mathbb{R}$ such that $z = \underline{x}-\epsilon$ for $\epsilon >0$, 
+
+
+The equality in \eqref{EqMadrid9am59} follows from \eqref{eqmarginal1}; the equality \eqref{EqMadrid10am03} follows from the definition of the Lebesgue measure of a singleton. Thus, this exemple constructs $P_{Y|X}$ and $P_X$ such that for some $\set{A} \in \set{B}(\mathbb{R})$  but $P_{Y|X=x}(A) = 0$ but $P_Y(A) > 0$  for some $x \in \set{X}$ , therefore the Radom-Nikodym derivative of $P_Y$ with respect to $P_Y|X=x$ does not exist. This proves that assumption (a) in \ref{TheoBYR2} cannot be weakened and is needed for all $x \in \set{X}$. A example for assumption (b) in \ref{TheoBYR2} can be constructed similarly. 
+\end{example}
+
+
+\begin{example}
+Let $\left( \mathbb{R}, \set{B}(\mathbb{R}), P_X \right)$ be a probability space, with $P_X$ absolutely continuous with respect to 
+the Lebesgue measure $\mu$ on $\left(\mathbb{R}, \set{B}(\mathbb{R}) \right)$. For all $x \in \mathbb{R}$ and for all $\set{A} \in 
+\set{B}(\mathbb{R})$, let 
+\begin{IEEEeqnarray}{rCl}
+P_{Y|X} &\triangleq& \{P_{Y|X=x} \in \triangle \left(\mathbb{R}, \set{B}(\mathbb{R}) \right) : x \in \mathbb{R} \}\\
+\nonumber
+\text{such that:}\\
+&&P_{Y|X=x} (\set{A}) = \ind{x\in \set{A}}
+\end{IEEEeqnarray}
+Hence, there exists a unique measure on $\left(\mathbb{R}^2, \set{B}(\mathbb{R}) \right)$ denoted by $P_{XY}$ such that:
+
+\begin{IEEEeqnarray}{rCl}
+P_{XY}(\set{A}) &=& \int_{\mathbb{R}} \int_{\set{A}_y} \mathrm{d} P_{Y|X=x}(y) \mathrm{d} P_X(x)\\
+&=& \int_{\mathbb{R}} P_{Y|X=x}(\set{A}_x) \mathrm{d} P_X(x)\\
+&=& \int _{\mathbb{R}} \ind{(x,x) \in \set(A)} \mathrm{d} P_X(x)\\
+&=& P_X \left( \{ t\in \mathbb{R}: (t,t) \in \set{A} \} \right).
+\end{IEEEeqnarray}
+
+Assuming that $\set{A} = \{ (x,y) \in \mathbb{R}^2: x=y\}$, it follows that 
+\begin{IEEEeqnarray}{rCl}
+P_{XY} &=& P_X \left( \{ t\in \mathbb{R}: (t,t) \in \set{A} \} \right)\\
+&=& P_X(\mathbb{R})\\
+&=& 1.
+\end{IEEEeqnarray}
+Moreover, let  the measure $P_Y$ on $\left( \mathbb{R}, \set{B}(\mathbb{R})\right)$ be such that for all $\set{A} \in \set{B}
+(\mathbb{R})$, 
+\begin{IEEEeqnarray}{rCl}
+P_Y(\set{A}) &=& P_{XY} (\mathbb{R} \times A)\\
+&=& P_X(\{t \in \mathbb{R}: (t,t) \in \set{A}\}) = P_X(\set{A}), 
+\end{IEEEeqnarray}
+hence $P_Y$ is absolutely continuous with respect to $\mu$. 
+Hence,
+\begin{IEEEeqnarray}{rCl}
+&&P_XP_Y \left(\{(x,y) \in \mathbb{R}: x=y\} \right) \\
+&=& \int_{\{(x,y)\in \mathbb{R}^2: x=y\}} \mathrm{d} P_XP_Y (x,y)\\
+&=&  \int_{\{(x,y)\in \mathbb{R}^2: x=y\}} \frac{\mathrm{d} P_XP_Y}{\mathrm{d} \mu \mu}(x,y) \mathrm{d} \mu \mu (x,y)\\
+&=&  \int_{\{(x,y)\in \mathbb{R}^2: x=y\}} \frac{\mathrm{d} P_X}{\mathrm{d} \mu}(x)\frac{\mathrm{d} P_Y}{\mathrm{d} \mu}(y) \mathrm{d} \mu \mu (x,y)\\
+&=& \int_{\mathbb{R}} \int_{\mathbb{R}} \ind{\{ x=y\}} \frac{\mathrm{d} P_X}{\mathrm{d} \mu}(x)\frac{\mathrm{d} P_Y}{\mathrm{d} \mu}(y) \mathrm{d} \mu (x) \mathrm{d} \mu (y)\\
+\label{AntibesJan23pm2025}
+&=& \int_{\mathbb{R}} \int_{\{y\}} \frac{\mathrm{d} P_X}{\mathrm{d} \mu}(x)\frac{\mathrm{d} P_Y}{\mathrm{d} \mu}(y) \mathrm{d} \mu (x) \mathrm{d} \mu (y)\\
+&=& 0
+\end{IEEEeqnarray}
+
+where the equality in \eqref{AntibesJan23pm2025} follows from the fact that for all $y \in \mathbb{R}, \mu(\{y\}) = 0$. Thus 
+$P_{XY}$ is not absolutely continuous with respect to $P_XP_Y$.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%
+%. Information measures
+%%%%%%%%%%%%%%%%%%%%%
+\section{Information measures}\label{DefInformation} 
+\begin{definition} [Information]
+Given a random variable $X$ following a probability measure $P_X \in \triangle(\set{X}, \set{F}_\set{X})$ and a sigma finite probability measure $Q \in \triangle(\set{X}, \set{F}_\set{X})$, with $P_X\ll Q$, for all $x \in suppP_X$, the information provided by $x$ is
+\begin{eqnarray}
+\iota_X(x) & =& - \log \RND{P_X}{Q}(x).
+\end{eqnarray}
+When $Q$ is the counting measure $\RND{P_X}{Q}$ is the probability mass function induced by $P_X$, and when $Q$ is the Lebesgue measure $\RND{P_X}{Q}$ is the probability density function induced by $P_X$.
+\end{definition}
+
+\begin{definition}[Information Spectrum]\label{DefInfoSpectrum}  
+Given a random variable $X$ following a probability measure $P_X \in \triangle(\set{X}, \set{F}_\set{X})$ and the counting measure $Q \in \triangle(\set{X}, \set{F}_\set{X}) $, with $P_X\ll Q$, the information spectrum of $X$, denoted by $S_X: \mathds{R} \rightarrow [0,1]$, is the cumulative distribution function of the random variable $\iota_{X}(X)$. That is, for all $a \in \mathds{R}$,
+\begin{equation}
+S_X(a) = \sum_{x \in \supp{P_X}} \RND{P_X}{Q}(x) \ind{\iota_{X}(x) \leqslant a}.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Joint Information]\label{DefJointInformation} 
+Given two random variables $X$ and $Y$  with joint probability mass function $p_{X Y}: \mathds{R}^2 \rightarrow [0,1]$, for all $(x,y) \in \supp{p_X} \times \supp{p_Y}$, the information provided by  $ (x,y)$ is  
+\begin{equation}
+\label{EqDefInfo}
+\iota_{X Y }(x,y) = -\log\left( p_{X Y }(x, y) \right) .
+\end{equation}
+\end{definition}
+
+\subsection{KL}
+
+
+\subsection{Mutual information}
+
+Let $P_{XY} \in \triangle\left( \set{X} \times \set{Y} \right)$ and $P_{YX} \in 
+\triangle\left( \set{Y} \times \set{X} \right)$ be two joint probability measures, satisfying \eqref{EqJanuary10at16h43in2025}, such 
+that $P_{XY} \triangleq P_{X|Y}P_X$ and $P_{XY} \triangleq P_{Y|X}P_Y$. Let the marginal probability measures in $
+\triangle\left( \set{X} \right)$ and $\triangle\left( \set{Y} \right)$, be denoted by $P_X$ and $P_Y$ and satisfy for all measurable 
+sets $\set{A} \subseteq \set{X}$ and for all measurable sets $\set{B} \subseteq \set{Y}$, \eqref{eqmargpx} and \eqref{eqmargpy} 
+respectively.. Let two product measures $P_XP_Y \in \triangle\left( \set{Y} \times \set{X} \right) $and $P_YP_X \in 
+\triangle\left( \set{Y} \times \set{X} \right)$ be the product of the 
+marginals. For all~$x \in \set{X}$, the probability measure~$P_{Y | X = x}$ is absolutely continuous with respect to~$P_{Y}$; 
+and for all~$y \in \set{Y}$, the probability measure~$P_{X | Y = y}$ is absolutely continuous with respect to~$P_{X}$.
+
+\begin{IEEEeqnarray}{rCl}
+\mathrm{I}(P_{Y|X}; P_Y P_X) &\triangleq& \mathrm{D}\left(P_{YX} \| P_Y P_X\right) \\
+&=& \int \log \left( \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(x, y) \right)  \mathrm{d}P_{YX}(x, y) \\
+&=& \int \mathrm{D}\left(P_{Y|X=x} \| P_Y\right)  \mathrm{d}P_X(x),
+\end{IEEEeqnarray}
+\begin{IEEEeqnarray}{rCl}
+\mathrm{I}(P_{X|Y}; P_X P_Y) &\triangleq& \mathrm{D}\left(P_{XY} \| P_X P_Y\right) \\
+&=& \int \log \left( \frac{\mathrm{d}P_{XY}}{\mathrm{d}P_X P_Y}(x, y) \right)  \mathrm{d}P_{XY}(x, y) \\
+&=& \int \mathrm{D}\left(P_{X|Y=y} \| P_X\right)  \mathrm{d}P_Y(y).
+\end{IEEEeqnarray}
+
+\begin{IEEEeqnarray}{rCl}
+&& \mathrm{D}\left(P_{XY} \| P_X P_Y\right) \\
+&=& \int \log \left( \frac{\mathrm{d}P_{XY}}{\mathrm{d}P_X P_Y}(x, y) \right) \mathrm{d}P_{XY}(x, y) \\
+&=& \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right) \mathrm{d}P_{XY}(x, y) \\
+&=& \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x)\right)   \frac{\mathrm{d}P_{XY}}{\mathrm{d}P_X P_Y}(x, y)  
+\mathrm{d}P_X P_Y(x, y) \squeezeequ\spnum \\
+&=& \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right)  \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) 
+\mathrm{d}P_XP_Y(x,y) \squeezeequ\spnum \\
+%&=& \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right)  \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x)  
+%\mathrm{d}P_X(x)  \mathrm{d}P_Y(y) \\\squeezeequ\spnum
+&=& \int \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right)  \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x)  
+\mathrm{d}P_X(x)  \mathrm{d}P_Y(y).\squeezeequ\spnum
+\end{IEEEeqnarray}
+
+Option 1:
+\begin{IEEEeqnarray}{rCl}
+\nonumber
+&& \int \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right)  \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x)  
+\mathrm{d}P_X(x)  \mathrm{d}P_Y(y)\squeezeequ\spnum \\
+&=& \int \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right)  \mathrm{d}P_{X|Y=y}(x)  \mathrm{d}P_Y(y) 
+\squeezeequ\spnum \\
+&=& \int \mathrm{D} \left( P_{X|Y=y} \| P_X \right)  \mathrm{d}P_Y(y).\squeezeequ\spnum
+\end{IEEEeqnarray}
+
+Option 2:
+
+\begin{IEEEeqnarray}{rCl}
+\nonumber
+&& \int \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right)  \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x)  
+\mathrm{d}P_X(x)  \mathrm{d}P_Y(y)\squeezeequ\spnum \\
+%&=& \int \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right) \frac{\mathrm{d}P_{Y|X=x}}{\mathrm{d}P_Y}(y)  
+%\mathrm{d}P_X(x)  \mathrm{d}P_Y(y) \\\squeezeequ\spnum
+&=& \int \int \log \left(\frac{\mathrm{d}P_{Y|X=x}}{\mathrm{d}P_Y}(y) \right) \frac{\mathrm{d}P_{Y|X=x}}{\mathrm{d}P_Y}(y)  
+\mathrm{d}P_X(x)  \mathrm{d}P_Y(y) \squeezeequ\spnum \\
+&=& \int \int \log \left(\frac{\mathrm{d}P_{Y|X=x}}{\mathrm{d}P_Y}(y) \right) \frac{\mathrm{d}P_{Y|X=x}}{\mathrm{d}P_Y}(y)  
+\mathrm{d}P_Y(y)  \mathrm{d}P_X(x) \squeezeequ\spnum \\
+&=& \int \int \log \left( \frac{\mathrm{d}P_{Y|X=x}}{\mathrm{d}P_Y}(y)  \right)  \mathrm{d}P_{Y|X=x}(y)  \mathrm{d}P_X(x) 
+\squeezeequ\spnum \\
+%&=& \int \int \log \left( \frac{\mathrm{d}P_{Y|X=x}}{\mathrm{d}P_Y}(y) \right)  \mathrm{d}P_{Y|X=x}(y)  \mathrm{d}P_X(x) \\
+%\squeezeequ\spnum
+&=& \int \mathrm{D} \left( P_{Y|X=x} \| P_Y \right)  \mathrm{d}P_X(x).\squeezeequ\spnum
+\end{IEEEeqnarray}
+
+Option 3:
+\begin{IEEEeqnarray}{rCl}
+\nonumber
+&& \int \int \log \left( \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x) \right) \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}(x)  
+\mathrm{d}P_X(x)  \mathrm{d}P_Y(y) \squeezeequ\spnum \\
+%&=& \int \int \log \left( \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, x) \right) \frac{\mathrm{d}P_{X|Y=y}}{\mathrm{d}P_X}
+%(x)  \mathrm{d}P_X(x)  \mathrm{d}P_Y(y) \\\squeezeequ\spnum
+&=& \int \int \log \left( \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, x) \right) \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, 
+x)  \mathrm{d}P_X(x)  \mathrm{d}P_Y(y)\squeezeequ\spnum \\
+&=& \int \int \log \left( \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, x) \right) \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, 
+x)  \mathrm{d}P_Y(y)  \mathrm{d}P_X(x) \squeezeequ\spnum \\
+&=& \int \log \left( \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, x) \right) \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, x)  
+\mathrm{d}P_{Y}P_{X}(y, x) \squeezeequ\spnum \\
+&=& \int \log \left( \frac{\mathrm{d}P_{YX}}{\mathrm{d}P_Y P_X}(y, x) \right)  \mathrm{d}P_{YX}(y, x) \\
+&=& \mathrm{D}\left( P_{YX} \| P_Y P_X \right).\squeezeequ\spnum
+\end{IEEEeqnarray}
+
+\subsection{Lautum information}
+
+
+%\triggeratref{24}
+\bibliographystyle{IEEEtranlink}%tran
+%\bibliographystyle{../../WeeklyReport/Bibliography/Mytran}
+\bibliography{Bermudez-reference.bib}
 
 
 %\section{Biography Section}
 %%
-%\begin{IEEEbiographynophoto}{Francisco Daunas} received the M.Sc. degree in Advanced Control and Systems Engineering from The University of Sheffield, United Kingdom, in 2019. He is currently a Ph.D. candidate at the Department of Automatic Control and Systems Engineering of The University of Sheffield, United Kingdom. His research interests span information theory, statistical learning, and machine learning.
-%\end{IEEEbiographynophoto}
+%\begin{biographynophoto}{Francisco Daunas} received the M.Sc. degree in Advanced Control and Systems Engineering from The University of Sheffield, United Kingdom, in 2019. He is currently a Ph.D. candidate at the Department of Automatic Control and Systems Engineering of The University of Sheffield, United Kingdom. His research interests span information theory, statistical learning, and machine learning.
+%\end{biographynophoto}
 %\balance
 %
-%\begin{IEEEbiographynophoto}{Iñaki Esnaola} (Member, IEEE) received the M.Sc. degree in Electrical Engineering from University of Navarra, Spain in 2006 and a Ph.D. in Electrical Engineering from University of Delaware, Newark, DE in 2011. He is currently a Senior Lecturer in the Department of Automatic Control and Systems Engineering of The University of Sheffield, and a Visiting Research Collaborator in the Department of Electrical Engineering of Princeton University, Princeton, NJ. In 2010-2011 he was a Research Intern with Bell Laboratories, Alcatel-Lucent, Holmdel, NJ, and in 2011-2013, he was a Postdoctoral Research Associate at Princeton University, Princeton, NJ. His research interests include information theory and communication theory with an emphasis on the application to smart grid problems.
-%\end{IEEEbiographynophoto}
+%\begin{biographynophoto}{Iñaki Esnaola} (Member, ) received the M.Sc. degree in Electrical Engineering from University of Navarra, Spain in 2006 and a Ph.D. in Electrical Engineering from University of Delaware, Newark, DE in 2011. He is currently a Senior Lecturer in the Department of Automatic Control and Systems Engineering of The University of Sheffield, and a Visiting Research Collaborator in the Department of Electrical Engineering of Princeton University, Princeton, NJ. In 2010-2011 he was a Research Intern with Bell Laboratories, Alcatel-Lucent, Holmdel, NJ, and in 2011-2013, he was a Postdoctoral Research Associate at Princeton University, Princeton, NJ. His research interests include information theory and communication theory with an emphasis on the application to smart grid problems.
+%\end{biographynophoto}
 %
 %
-%\begin{IEEEbiographynophoto}{Samir M. Perlaza} (Senior Member, IEEE) is a research scientist with the Institut National de Recherche en Informatique et en Automatique (INRIA), France, and a visiting research scholar at the Department of Electrical Engineering of Princeton University, Princeton, (NJ, USA). He received the M.Sc. and Ph.D. degrees from \'Ecole Nationale Sup\'erieure des T\'el\'ecommunications (Telecom ParisTech), Paris, France, in 2008 and 2011, respectively. Previously, from 2008 to 2011, he was a Research Engineer at France T\'el\'ecom - Orange Labs (Paris, France). He has held long-term academic appointments at the Alcatel-Lucent Chair in Flexible Radio at Supélec (Gif-sur-Yvette, France); at Princeton University (Princeton, NJ) and at the University of Houston (Houston, TX). Dr. Perlaza currently serves as an Editor of the IEEE Transactions on Communications. Dr. Perlaza has been distinguished by the European Commission with an Alban Fellowship in 2006 and a Marie Skłodowska-Curie Fellowship in 2015. His research interests lie in the overlap of signal processing, information theory, game theory and wireless communications.
-%\end{IEEEbiographynophoto}
+%\begin{biographynophoto}{Samir M. Perlaza} (Senior Member, ) is a research scientist with the Institut National de Recherche en Informatique et en Automatique (INRIA), France, and a visiting research scholar at the Department of Electrical Engineering of Princeton University, Princeton, (NJ, USA). He received the M.Sc. and Ph.D. degrees from \'Ecole Nationale Sup\'erieure des T\'el\'ecommunications (Telecom ParisTech), Paris, France, in 2008 and 2011, respectively. Previously, from 2008 to 2011, he was a Research Engineer at France T\'el\'ecom - Orange Labs (Paris, France). He has held long-term academic appointments at the Alcatel-Lucent Chair in Flexible Radio at Supélec (Gif-sur-Yvette, France); at Princeton University (Princeton, NJ) and at the University of Houston (Houston, TX). Dr. Perlaza currently serves as an Editor of the  Transactions on Communications. Dr. Perlaza has been distinguished by the European Commission with an Alban Fellowship in 2006 and a Marie Skłodowska-Curie Fellowship in 2015. His research interests lie in the overlap of signal processing, information theory, game theory and wireless communications.
+%\end{biographynophoto}
 %
-%\begin{IEEEbiographynophoto}{H. Vincent Poor}(Life Fellow, IEEE) received the Ph.D. degree in electrical engineering and computer science from Princeton University in 1977. From 1977 until 1990, he was on the faculty of the University of Illinois at Urbana-Champaign. Since 1990, he has been on the faculty at Princeton, where he is currently the Michael Henry Strater University Professor of Electrical Engineering. During 2006 to 2016, he served as the dean of Princeton’s School of Engineering and Applied Science. He has also held visiting appointments at several other universities, including most recently at Berkeley and Cambridge. His research interests include the areas of information theory, machine learning and network science, and their applications in wireless networks, energy systems and related fields. Among his publications in these areas is the forthcoming book Machine Learning and Wireless Communications (Cambridge University Press, 2021). He is a member of the National Academy of Engineering and the National Academy of Sciences, and is a foreign member of the Chinese Academy of Sciences, the Royal Society, and other national and international academies. Recent recognition of his work includes the 2017 IEEE Alexander Graham Bell Medal and a DEng honoris causa from the University of Waterloo, awarded in 2019.
-%\end{IEEEbiographynophoto}
+%\begin{biographynophoto}{H. Vincent Poor}(Life Fellow, ) received the Ph.D. degree in electrical engineering and computer science from Princeton University in 1977. From 1977 until 1990, he was on the faculty of the University of Illinois at Urbana-Champaign. Since 1990, he has been on the faculty at Princeton, where he is currently the Michael Henry Strater University Professor of Electrical Engineering. During 2006 to 2016, he served as the dean of Princeton’s School of Engineering and Applied Science. He has also held visiting appointments at several other universities, including most recently at Berkeley and Cambridge. His research interests include the areas of information theory, machine learning and network science, and their applications in wireless networks, energy systems and related fields. Among his publications in these areas is the forthcoming book Machine Learning and Wireless Communications (Cambridge University Press, 2021). He is a member of the National Academy of Engineering and the National Academy of Sciences, and is a foreign member of the Chinese Academy of Sciences, the Royal Society, and other national and international academies. Recent recognition of his work includes the 2017  Alexander Graham Bell Medal and a DEng honoris causa from the University of Waterloo, awarded in 2019.
+%\end{biographynophoto}
 
 
 
