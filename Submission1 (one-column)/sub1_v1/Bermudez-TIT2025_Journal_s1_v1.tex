@@ -798,32 +798,44 @@ $P_{XY}$ is not absolutely continuous with respect to $P_XP_Y$.
 %%%%%%%%%%%%%%%%%%%%%
 %. Information measures
 %%%%%%%%%%%%%%%%%%%%%
-\section{Information measures}\label{DefInformation} 
-\begin{definition} [Information]
-Given a random variable $X$ following a probability measure $P_X \in \triangle(\set{X}, \set{F}_\set{X})$ and a sigma finite probability measure $Q \in \triangle(\set{X}, \set{F}_\set{X})$, with $P_X\ll Q$, for all $x \in suppP_X$, the information provided by $x$ is
-\begin{eqnarray}
-\iota_X(x) & =& - \log \RND{P_X}{Q}(x).
-\end{eqnarray}
+\section{Information measures}
+%\begin{definition} [Information]\label{DefInformation} 
+%Given a random variable $X$ following a probability measure $P_X \in \triangle(\set{X}, \set{F}_\set{X})$ and a sigma finite probability measure $Q \in \triangle(\set{X}, \set{F}_\set{X})$, with $P_X\ll Q$, for all $x \in suppP_X$, the information provided by $x$ is
+%\begin{eqnarray}
+%\iota_X(x) & =& - \log \RND{P_X}{Q}(x).
+%\end{eqnarray}
+%When $Q$ is the counting measure $\RND{P_X}{Q}$ is the probability mass function induced by $P_X$, and when $Q$ is the Lebesgue measure $\RND{P_X}{Q}$ is the probability density function induced by $P_X$.
+%\end{definition}
+%
+%\begin{definition}[Information Spectrum]\label{DefInfoSpectrum}  
+%Given a random variable $X$ following a probability measure $P_X \in \triangle(\set{X}, \set{F}_\set{X})$ and the counting measure $Q \in \triangle(\set{X}, \set{F}_\set{X}) $, with $P_X\ll Q$, the information spectrum of $X$, denoted by $S_X: \mathds{R} \rightarrow [0,1]$, is the cumulative distribution function of the random variable $\iota_{X}(X)$. That is, for all $a \in \mathds{R}$,
+%\begin{equation}
+%S_X(a) = \sum_{x \in \supp{P_X}} \RND{P_X}{Q}(x) \ind{\iota_{X}(x) \leqslant a}.
+%\end{equation}
+%\end{definition}
+%
+%\begin{definition}[Joint Information]\label{DefJointInformation} 
+%Given two random variables $X$ and $Y$  with joint probability mass function $P_{X Y}: \mathds{R}^2 \rightarrow [0,1]$, for all $(x,y) \in \supp{P_X} \times \supp{P_Y}$, the information provided by  $(x,y)$ is  
+%\begin{equation}
+%\label{EqDefInfo}
+%\iota_{XY}(x,y) = -\log\left( \RND{P_XY}{Q}(x, y) \right) .
+%\end{equation}
+%\end{definition}
+
+%%%%%%%%%%%
+%ENTROPY
+%%%%%%%%%%
+\subsection{KL}
+The entropy of a given random variable is defined as follows.
+
+\begin{definition}[Entropy]\label{DefEnt} Let $X$ be a discrete random variable and assume it  induces the probability measure $P_X$ \in \triangle(\set{X}, \set{F}_\set{X})$ and a sigma finite probability measure $Q \in \triangle(\set{X}, \set{F}_\set{X})$, with $P_X\ll Q$,
+ on $\left( \mathds{R}, \mathcal{B} \left( \mathds{R} \right) \right)$. Then, the entropy of $X$, denoted by $H(X)$, $H(\RND{P_X}{Q}(x))$ or $H(P_X)$, is:
+\begin{equation}
+\label{EqDiscreteEntropy}
+H(X) \triangleq   - \sum_{x \in \supp{P_X} } \hspace{-2mm} \RND{P_X}{Q}(x) \log P_X(x).
+\end{equation}
 When $Q$ is the counting measure $\RND{P_X}{Q}$ is the probability mass function induced by $P_X$, and when $Q$ is the Lebesgue measure $\RND{P_X}{Q}$ is the probability density function induced by $P_X$.
 \end{definition}
-
-\begin{definition}[Information Spectrum]\label{DefInfoSpectrum}  
-Given a random variable $X$ following a probability measure $P_X \in \triangle(\set{X}, \set{F}_\set{X})$ and the counting measure $Q \in \triangle(\set{X}, \set{F}_\set{X}) $, with $P_X\ll Q$, the information spectrum of $X$, denoted by $S_X: \mathds{R} \rightarrow [0,1]$, is the cumulative distribution function of the random variable $\iota_{X}(X)$. That is, for all $a \in \mathds{R}$,
-\begin{equation}
-S_X(a) = \sum_{x \in \supp{P_X}} \RND{P_X}{Q}(x) \ind{\iota_{X}(x) \leqslant a}.
-\end{equation}
-\end{definition}
-
-\begin{definition}[Joint Information]\label{DefJointInformation} 
-Given two random variables $X$ and $Y$  with joint probability mass function $p_{X Y}: \mathds{R}^2 \rightarrow [0,1]$, for all $(x,y) \in \supp{p_X} \times \supp{p_Y}$, the information provided by  $ (x,y)$ is  
-\begin{equation}
-\label{EqDefInfo}
-\iota_{X Y }(x,y) = -\log\left( p_{X Y }(x, y) \right) .
-\end{equation}
-\end{definition}
-
-\subsection{KL}
-
 
 \subsection{Mutual information}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.7)  24 JAN 2025 15:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.7)  27 JAN 2025 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1028,7 +1028,19 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [lettersize].
 
-(./Bermudez-TIT2025_Journal_s1_v1.aux)
+(./Bermudez-TIT2025_Journal_s1_v1.aux
+
+./Bermudez-TIT2025_Journal_s1_v1.aux:111: LaTeX Error: Missing \begin{document}
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.111 \
+       
+? 
+)
 \openout1 = `Bermudez-TIT2025_Journal_s1_v1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -1073,6 +1085,11 @@ Package hyperref Info: Link coloring OFF on input line 39.
 \@outlinefile=\write5
 \openout5 = `Bermudez-TIT2025_Journal_s1_v1.out'.
 
+[1
+Non-PDF special ignored!
+<special> header=psfrag.pro
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
+al/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}]
 
 LaTeX Warning: No \author given.
 
@@ -1100,27 +1117,118 @@ LaTeX Font Info:    Trying to load font information for OMX+yhex on input line
 File: OMXyhex.fd 
 File: OMXyhex.fd 2013/07/03 v1.1 YH's humble contribution to TeX maths (NP)
 )
+
+LaTeX Warning: Citation `ash2000probability' on page 2 undefined on input line 
+85.
+
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
 11.
-
 (/usr/local/texlive/2024/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [1
-Non-PDF special ignored!
-<special> header=psfrag.pro
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5]
+)
+
+LaTeX Warning: Citation `ash2000probability' on page 2 undefined on input line 
+151.
+
+[2]
+
+LaTeX Warning: Citation `ash2000probability' on page 3 undefined on input line 
+171.
+
+
+LaTeX Warning: Citation `ash2000probability' on page 3 undefined on input line 
+174.
+
+
+LaTeX Warning: Citation `ash2000probability' on page 3 undefined on input line 
+174.
+
+[3]
+
+LaTeX Warning: Citation `ash2000probability' on page 4 undefined on input line 
+287.
+
+
+LaTeX Warning: Citation `ash2000probability' on page 4 undefined on input line 
+317.
+
+[4] [5]
+
+LaTeX Warning: Citation `ash2000probability' on page 6 undefined on input line 
+426.
+
+
+LaTeX Warning: Citation `ash2000probability' on page 6 undefined on input line 
+484.
+
 [6]
 
-LaTeX Warning: Reference `DefAbsCountinuity' on page 7 undefined on input line 
-591.
+LaTeX Warning: Citation `ash2000probability' on page 7 undefined on input line 
+566.
 
 [7]
 
-LaTeX Warning: Reference `EqMay20at16h50in2024' on page 8 undefined on input li
+LaTeX Warning: Citation `ash2000probability' on page 8 undefined on input line 
+583.
+
+
+LaTeX Warning: Reference `DefAbsCountinuity' on page 8 undefined on input line 
+591.
+
+[8]
+
+LaTeX Warning: Reference `EqNovember16at18h29in2024NiceC' on page 9 undefined o
+n input line 658.
+
+
+LaTeX Warning: Citation `lehmann2005testing' on page 9 undefined on input line 
+658.
+
+
+LaTeX Warning: Reference `EqNovember16at18h36in2024NiceC' on page 9 undefined o
+n input line 683.
+
+
+LaTeX Warning: Citation `ash2000probability' on page 9 undefined on input line 
+683.
+
+
+LaTeX Warning: Reference `EqNovember16at18h36in2024NiceC1' on page 9 undefined 
+on input line 684.
+
+
+LaTeX Warning: Citation `lehmann2005testing' on page 9 undefined on input line 
+684.
+
+
+LaTeX Warning: Reference `EqNovember16at18h29in2024NiceF' on page 9 undefined o
+n input line 686.
+
+
+LaTeX Warning: Reference `EqNovember16at18h36in2024NiceG' on page 9 undefined o
+n input line 686.
+
+
+LaTeX Warning: Citation `lehmann2005testing' on page 9 undefined on input line 
+692.
+
+
+LaTeX Warning: Reference `EqMay20at16h50in2024' on page 9 undefined on input li
 ne 692.
 
-[8] [9] [10] [11] (./Bermudez-TIT2025_Journal_s1_v1.bbl) [12]
+[9] [10]
+
+LaTeX Warning: Reference `AntibesJan23pm2025' on page 11 undefined on input lin
+e 794.
+
+./Bermudez-TIT2025_Journal_s1_v1.tex:831: Missing $ inserted.
+<inserted text> 
+                $
+l.831 ...induces the probability measure $P_X$ \in
+                                                   \triangle(\set{X}, \set{F...
+
+? 
+[11] (./Bermudez-TIT2025_Journal_s1_v1.bbl [12]) [13]
 (./Bermudez-TIT2025_Journal_s1_v1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1130,16 +1238,26 @@ L3 programming layer <2024-02-20>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `Bermudez-TIT2025_Journal_s1_v1.out' has not 
-changed.
-(rerunfilecheck)             Checksum: D32FAAF875CC613417A33DCC0A8358B1;1351.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Bermudez-TIT2025_Journal_s1_v1.out' has c
+hanged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Bermudez-TIT2025_Journal_s1_v1.out'
+:
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  D32FAAF875CC613417A33DCC0A8358B1;1351.
  ) 
 Here is how much of TeX's memory you used:
- 26374 strings out of 474116
- 490054 string characters out of 5743682
+ 26364 strings out of 474116
+ 489919 string characters out of 5743682
  1954187 words of memory out of 5000000
- 48092 multiletter control sequences out of 15000+600000
- 664463 words of font info for 144 fonts, out of 8000000 for 9000
+ 48082 multiletter control sequences out of 15000+600000
+ 665559 words of font info for 145 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  114i,11n,121p,1367b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -1153,18 +1271,18 @@ texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/te
 xlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texliv
-e/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2024/texmf-dist/f
-onts/type1/public/yhmath/yhcmex.pfb>
-Output written on Bermudez-TIT2025_Journal_s1_v1.pdf (12 pages, 235879 bytes).
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/font
+s/type1/urw/times/utmri8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/p
+ublic/yhmath/yhcmex.pfb>
+Output written on Bermudez-TIT2025_Journal_s1_v1.pdf (13 pages, 227672 bytes).
 PDF statistics:
- 497 PDF objects out of 1000 (max. 8388607)
- 440 compressed objects within 5 object streams
- 146 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 450 PDF objects out of 1000 (max. 8388607)
+ 393 compressed objects within 4 object streams
+ 145 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
